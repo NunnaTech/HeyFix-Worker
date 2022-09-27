@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="colorSoftlyGray" format="color" />
+    <attr name="colorOnSoftlyGray" format="color" />
+    <attr name="colorSoftlyGrayContainer" format="color" />
+    <attr name="colorOnSoftlyGrayContainer" format="color" />
+    <attr name="harmonizeSoftlyGray" format="boolean" />
+    <attr name="colorSoftlyBlack" format="color" />
+    <attr name="colorOnSoftlyBlack" format="color" />
+    <attr name="colorSoftlyBlackContainer" format="color" />
+    <attr name="colorOnSoftlyBlackContainer" format="color" />
+    <attr name="harmonizeSoftlyBlack" format="boolean" />
+</resources>

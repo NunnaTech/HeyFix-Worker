@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- DP: Boxes and containers -->
+    <dimen name="dimenScreenPadding">20dp</dimen>
+
+
+    <!-- SP: Text -->
+</resources>
