@@ -1,26 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.App" parent="Theme.MaterialComponents.*">
-        ...
-        <item name="colorPrimary">@color/shrine_pink_100</item>
-        <item name="colorOnSurface">@color/shrine_pink_900</item>
-        <item name="colorError">@color/shrine_red</item>
-        <item name="textAppearanceSubtitle1">@style/TextAppearance.App.Subtitle1</item>
-        <item name="textAppearanceCaption">@style/TextAppearance.App.Caption</item>
-        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.App.SmallComponent</item>
-    </style>
-
-    <style name="TextAppearance.App.Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
-        <item name="fontFamily">@font/rubik</item>
-        <item name="android:fontFamily">@font/rubik</item>
-    </style>
-
-    <style name="TextAppearance.App.Caption" parent="TextAppearance.MaterialComponents.Caption">
-        <item name="fontFamily">@font/rubik</item>
-        <item name="android:fontFamily">@font/rubik</item>
-    </style>
-
     <style name="ShapeAppearance.App.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
         <item name="cornerFamily">cut</item>
         <item name="cornerSize">4dp</item>
