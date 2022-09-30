@@ -5,4 +5,5 @@
 
 
     <!-- SP: Text -->
+    <dimen name="dimenText">30sp</dimen>
 </resources>
