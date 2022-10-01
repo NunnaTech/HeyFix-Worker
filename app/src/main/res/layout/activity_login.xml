@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="@dimen/dimenScreenPadding"
+    tools:context=".LoginActivity">
+
+    <ImageView
+        android:src="@drawable/ic_lightlogo"
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"/>
+
+    <TextView
+        android:textColor="@color/md_theme_light_surfaceTintColor"
+        android:layout_margin="10dp"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        android:text="HeyFix"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:hint="Correo Electronico"
+        app:counterEnabled="true"
+        app:counterMaxLength="50"
+        app:endIconMode="clear_text"
+        app:errorEnabled="true"
+        app:helperText="Ej: sterplay2010@yahoo.com"
+        app:startIconDrawable="@drawable/ic_person">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:maxLength="50" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:hint="Contraseña"
+        app:counterEnabled="true"
+        app:counterMaxLength="50"
+        app:endIconMode="clear_text"
+        app:errorEnabled="true"
+        app:helperText="Ej: ********"
+        app:startIconDrawable="@drawable/ic_key">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:maxLength="50" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <Button
+        android:text="Iniciar Sesión"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="30dp">
+        <View
+            android:background="@color/SoftlyGray"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:layout_width="400dp"
+            android:layout_height="2dp"/>
+        <TextView
+            android:layout_weight="1"
+            android:text="O"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/SoftlyGray"
+            android:layout_width="300dp"
+            android:layout_height="match_parent"/>
+        <View
+            android:background="@color/SoftlyGray"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:layout_width="400dp"
+            android:layout_height="2dp"/>
+    </LinearLayout>
+
+    <Button
+        android:drawableLeft="@drawable/ic_google"
+        android:textStyle="bold"
+        style="?attr/materialButtonOutlinedStyle"
+        android:text="Iniciar Sesión con Google"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

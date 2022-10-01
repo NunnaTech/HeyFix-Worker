@@ -36,4 +36,5 @@
 
     <!--  Custom colors:  -->
     <color name="Accent">#00AC1C</color>
+    <color name="Transparent">#00000000</color>
 </resources>
