@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/SoftlyWhite"
+    android:orientation="vertical"
+    android:padding="@dimen/dimenScreenPadding"
+    tools:context=".RegisterActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Selecciona una"
+            android:textColor="@color/SoftlyBlack"
+            android:textSize="36dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="foto"
+            android:textColor="@color/Primary"
+            android:textSize="36dp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="160dp"
+            android:layout_height="10dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/Primary" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="30dp"
+            android:text="@string/photo_indications"
+            android:textColor="@color/SoftlyGray"
+            android:textSize="16sp" />
+
+
+        <Button
+            android:id="@+id/btnTakePhoto"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="30dp"
+            android:text="Tomar una foto"
+            android:textColor="#ffffff" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+
+            <View
+                android:layout_width="167dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="@color/SoftlyGray" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:text="o"
+                android:textAlignment="center"
+                android:textColor="@color/SoftlyGray" />
+
+            <View
+                android:layout_width="167dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="@color/SoftlyGray" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnOpenGallery"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="@color/SoftlyGray"
+            android:text="@string/select_photo"
+            android:textColor="#ffffff" />
+
+
+        <ImageView
+            android:layout_marginTop="50dp"
+            android:layout_width="239dp"
+            android:layout_height="160dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ilustration_selfie" />
+
+    </LinearLayout>
+
+</LinearLayout>

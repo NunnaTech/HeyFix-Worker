@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">HeyFix-Worker</string>
+    <string name="photo_indications">Por favor, no uses lentes, gorras y/o accesorios que puedan interferir en tu rostro. Tu cara se debe ver completamente.</string>
+    <string name="select_photo">Seleccionar del álbum de fotos</string>
+    <string name="password_requests">Ingresa tu contraseña actual. La nueva contraseña debe tener entre 8 a 16 carácteres y debe ser diferente a la anterior.</string>
 </resources>
