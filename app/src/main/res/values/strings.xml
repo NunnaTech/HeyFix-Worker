@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">HeyFix-Worker</string>
+    <string name="strArrived">¡He llegado!</string>
+    <string name="strChat">Chat</string>
+    <string name="strCancelService">Cancelar servicio</string>
+    <string name="strFinishService">Finalizar servicio</string>
+    <string name="strMap">Mapa</string>
 </resources>
