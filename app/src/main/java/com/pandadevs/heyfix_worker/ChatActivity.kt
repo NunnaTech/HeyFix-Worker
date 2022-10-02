@@ -2,13 +2,13 @@ package com.pandadevs.heyfix_worker
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.pandadevs.heyfix_worker.databinding.ActivityServiceBinding
+import com.pandadevs.heyfix_worker.databinding.ActivityChatBinding
 
-class ServiceActivity : AppCompatActivity() {
-    lateinit var binding:ActivityServiceBinding
+class ChatActivity : AppCompatActivity() {
+    lateinit var binding:ActivityChatBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityServiceBinding.inflate(layoutInflater)
+        binding = ActivityChatBinding.inflate(layoutInflater)
         setContentView(binding.root)
     }
 }
