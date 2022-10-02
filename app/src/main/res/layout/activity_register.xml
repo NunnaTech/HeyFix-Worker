@@ -17,7 +17,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Crear nueva"
+            android:text="@string/strTitleRegister"
             android:textColor="@color/SoftlyBlack"
             android:textSize="36dp"
             android:textStyle="bold" />
@@ -25,7 +25,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="cuenta"
+            android:text="@string/strSubTitleRegister"
             android:textColor="@color/Primary"
             android:textSize="36dp"
             android:textStyle="bold" />
@@ -41,21 +41,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Por favor, llena los siguientes campos:"
+            android:text="@string/strInstructionsRegister"
             android:textColor="@color/SoftlyGray"
             android:textSize="16sp" />
 
 
         <Button
+            style="?attr/materialButtonOutlinedStyle"
             android:id="@+id/btnGoogle"
             android:layout_width="240dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:background="@android:color/transparent"
             android:layout_marginVertical="20dp"
             android:drawableLeft="@drawable/ic_google_icon"
-            android:padding="10dp"
-            android:text="REGISTRARTE CON GOOGLE"
+            android:text="@string/strRegisterGoogle"
             android:textColor="@color/SoftlyGray" />
 
         <LinearLayout
@@ -88,12 +87,17 @@
 
         <com.google.android.material.textfield.TextInputLayout
 
-            android:id="@+id/textField"
+            android:id="@+id/txtUserName"
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nombre completo"
-            android:layout_marginVertical="15dp"
+            app:helperText="Ej: Luis Álvarez"
+            app:endIconMode="clear_text"
+            app:errorEnabled="true"
+            app:counterEnabled="true"
+            app:counterMaxLength="50"
+            android:layout_marginVertical="5dp"
             android:textColorHint="@color/SoftlyBlack"
             app:startIconDrawable="@drawable/ic_baseline_person"
             app:startIconTint="@color/Primary">
@@ -102,47 +106,59 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/SoftlyWhite"
-                android:text="Ingresa tu nombre"
+                android:inputType="text"
+                android:maxLength="50"
                 android:textColor="@color/SoftlyGray"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
 
-            android:id="@+id/textField3"
+            android:id="@+id/txtEmail"
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
             android:layout_width="match_parent"
-            android:layout_marginVertical="15dp"
+            android:layout_marginVertical="5dp"
             android:layout_height="wrap_content"
             android:hint="Correo electrónico"
             android:textColorHint="@color/SoftlyBlack"
             app:startIconDrawable="@drawable/ic_baseline_email"
+            app:counterEnabled="true"
+            app:counterMaxLength="50"
+            app:endIconMode="clear_text"
+            app:errorEnabled="true"
+            app:helperText="Ej: name@example.com"
             app:startIconTint="@color/Primary">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/SoftlyWhite"
-                android:text="name@example.com"
+                android:inputType="textEmailAddress"
+                android:maxLength="50"
                 android:textColor="@color/SoftlyGray"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
 
-            android:id="@+id/textField2"
+            android:id="@+id/txtPassword"
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Crea una contraseña"
-            android:layout_marginVertical="15dp"
+            android:layout_marginVertical="5dp"
             android:textColorHint="@color/SoftlyBlack"
             app:startIconDrawable="@drawable/ic_baseline_lock"
+            app:counterEnabled="true"
+            app:counterMaxLength="50"
+            app:endIconMode="password_toggle"
+            app:errorEnabled="true"
             app:startIconTint="@color/Primary">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/SoftlyWhite"
-                android:text="Ingresa tu contraseña"
+                android:inputType="textPassword"
+                android:maxLength="50"
                 android:textColor="@color/SoftlyGray"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -151,10 +167,8 @@
             android:layout_width="240dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="50dp"
-            android:padding="10dp"
-            android:text="REGISTRARTE"
-            android:textColor="#ffffff" />
+            android:layout_marginTop="15dp"
+            android:text="@string/strRegister" />
 
 
     </LinearLayout>

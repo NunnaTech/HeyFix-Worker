@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
 
 
         binding.btnSearch.setOnClickListener {
-            startActivity(Intent(this, RegisterActivity::class.java))
+            startActivity(Intent(this, AboutActivity::class.java))
         }
     }
 }
