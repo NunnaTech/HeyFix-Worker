@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/SoftlyWhite"
-    android:orientation="vertical"
     android:padding="@dimen/dimenScreenPadding"
+    android:scrollbars="none"
     tools:context=".RegisterActivity">
 
     <LinearLayout
+        android:id="@+id/llMain"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -17,45 +17,40 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/strTitleRegister"
+            android:text="Crear nueva"
             android:textColor="@color/SoftlyBlack"
-            android:textSize="@dimen/title"
+            android:textSize="@dimen/dimenTitle"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/strSubTitleRegister"
-            android:textColor="@color/Primary"
-            android:textSize="@dimen/title"
+            android:text="cuenta"
+            android:textColor="@color/md_theme_light_primary"
+            android:textSize="@dimen/dimenTitle"
             android:textStyle="bold" />
 
         <View
-            android:layout_width="160dp"
-            android:layout_height="10dp"
+            android:layout_width="200dp"
+            android:layout_height="5dp"
             android:layout_marginTop="20dp"
-            android:background="@color/Primary"
-             />
+            android:background="@color/md_theme_light_primary" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="@string/strInstructionsRegister"
-            android:textColor="@color/SoftlyGray"
-            android:textSize="@dimen/littleSubTitle" />
-
+            android:text="Por favor, llena los siguientes campos:"
+            android:textSize="@dimen/dimenText" />
 
         <Button
-            style="?attr/materialButtonOutlinedStyle"
             android:id="@+id/btnGoogle"
-            android:layout_width="240dp"
+            style="@style/Widget.Material3.Button.OutlinedButton.Icon"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:layout_marginVertical="20dp"
-            android:drawableLeft="@drawable/ic_google_icon"
-            android:text="@string/strRegisterGoogle"
-            android:textColor="@color/SoftlyGray" />
+            android:text="Registrate con Google"
+            android:drawableLeft="@drawable/ic_google_icon" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -63,7 +58,7 @@
             android:gravity="center_vertical">
 
             <View
-                android:layout_width="167dp"
+                android:layout_width="wrap_content"
                 android:layout_height="1dp"
                 android:layout_weight="1"
                 android:background="@color/SoftlyGray" />
@@ -72,106 +67,122 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
+                android:gravity="center"
                 android:text="o"
-                android:textAlignment="center"
                 android:textColor="@color/SoftlyGray" />
 
             <View
-                android:layout_width="167dp"
+                android:layout_width="wrap_content"
                 android:layout_height="1dp"
                 android:layout_weight="1"
                 android:background="@color/SoftlyGray" />
-
-
         </LinearLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-
-            android:id="@+id/txtUserName"
-            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nombre completo"
-            app:helperText="Ej: Luis Álvarez"
-            app:endIconMode="clear_text"
-            app:errorEnabled="true"
+            android:layout_marginTop="15dp"
+            android:hint="Nombre"
             app:counterEnabled="true"
             app:counterMaxLength="50"
-            android:layout_marginVertical="5dp"
-            android:textColorHint="@color/SoftlyBlack"
-            app:startIconDrawable="@drawable/ic_baseline_person"
-            app:startIconTint="@color/Primary">
+            app:endIconMode="clear_text"
+            app:errorEnabled="true"
+            app:helperText="Ej: Héctor"
+            app:startIconDrawable="@drawable/ic_person">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/SoftlyWhite"
                 android:inputType="text"
-                android:maxLength="50"
-                android:textColor="@color/SoftlyGray"/>
+                android:maxLength="50" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
 
-            android:id="@+id/txtEmail"
-            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_marginVertical="5dp"
             android:layout_height="wrap_content"
-            android:hint="Correo electrónico"
-            android:textColorHint="@color/SoftlyBlack"
-            app:startIconDrawable="@drawable/ic_baseline_email"
+            android:layout_marginTop="15dp"
+            android:hint="Apellidos"
             app:counterEnabled="true"
             app:counterMaxLength="50"
             app:endIconMode="clear_text"
             app:errorEnabled="true"
-            app:helperText="Ej: name@example.com"
-            app:startIconTint="@color/Primary">
+            app:helperText="Ej: Saldaña Espinoza"
+            app:startIconDrawable="@drawable/ic_person">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/SoftlyWhite"
-                android:inputType="textEmailAddress"
-                android:maxLength="50"
-                android:textColor="@color/SoftlyGray"/>
+                android:inputType="text"
+                android:maxLength="50" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
 
-            android:id="@+id/txtPassword"
-            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Crea una contraseña"
-            android:layout_marginVertical="5dp"
-            android:textColorHint="@color/SoftlyBlack"
-            app:startIconDrawable="@drawable/ic_baseline_lock"
+            android:layout_marginTop="15dp"
+            android:hint="Correo electrónico"
             app:counterEnabled="true"
             app:counterMaxLength="50"
+            app:endIconMode="clear_text"
+            app:errorEnabled="true"
+            app:helperText="Ej: hector@gmail.com"
+            app:startIconDrawable="@drawable/ic_email">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:maxLength="50" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:hint="Nueva contraseña"
+            app:counterEnabled="true"
+            app:counterMaxLength="10"
             app:endIconMode="password_toggle"
             app:errorEnabled="true"
-            app:startIconTint="@color/Primary">
+            app:helperText="Ej: *******"
+            app:startIconDrawable="@drawable/ic_key">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/SoftlyWhite"
                 android:inputType="textPassword"
-                android:maxLength="50"
-                android:textColor="@color/SoftlyGray"/>
+                android:maxLength="10" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:hint="Repetir nueva contraseña"
+            app:counterEnabled="true"
+            app:counterMaxLength="10"
+            app:endIconMode="password_toggle"
+            app:errorEnabled="true"
+            app:helperText="Ej: *******"
+            app:startIconDrawable="@drawable/ic_key">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:maxLength="10" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/btnRegister"
-            android:layout_width="240dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:layout_marginTop="15dp"
-            android:text="@string/strRegister" />
-
+            android:text="Registrate" />
 
     </LinearLayout>
 
-
-</LinearLayout>
+</ScrollView>

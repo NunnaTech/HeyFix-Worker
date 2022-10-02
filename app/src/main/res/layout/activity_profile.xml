@@ -1,165 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="@dimen/dimenScreenPadding"
     tools:context=".ProfileActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/dimenScreenPadding">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <ImageView
-            android:layout_width="81dp"
-            android:layout_height="81dp"
-            android:layout_gravity="center"
-            android:contentDescription="@string/app_name"
-            android:src="@drawable/ic_lightlogo" />
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/circleImageView"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:background="@color/md_theme_light_tertiary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inset="0dp"
+                app:icon="@drawable/ic_add_image"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/circleImageView" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
             android:id="@+id/txtUserName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
             android:text="Annete Torres"
             android:textAlignment="center"
             android:textColor="@color/SoftlyBlack"
-            android:textSize="@dimen/textUser"
-            android:textStyle="bold" />
+            android:textSize="30sp"
+            android:textStyle="bold"
+            tools:text="Annete Torres" />
 
         <com.google.android.material.card.MaterialCardView
             style="?attr/materialCardViewElevatedStyle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/dimenScreenPadding"
-                android:drawableStart="@drawable/ic_info"
-                android:drawablePadding="5dp"
-                android:drawableTint="@color/Primary"
-                android:text="@string/strTitleProfile"
-                android:textColor="@color/SoftlyBlack"
-                android:textSize="@dimen/textUser"
-                android:textStyle="bold" />
-
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
                 android:orientation="vertical"
                 android:padding="@dimen/dimenScreenPadding">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="15dp"
+                    android:drawablePadding="5dp"
+                    android:text="@string/strTitleProfile"
+                    android:textSize="@dimen/dimenText"
+                    android:textStyle="bold"
+                    app:drawableStartCompat="@drawable/ic_info"
+                    app:drawableTint="@color/Primary" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:text="@string/strEditProfile"
-                    android:textColor="@color/SoftlyGray"
-                    android:textSize="@dimen/littleSubTitle" />
+                    android:textSize="@dimen/dimenText" />
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/name"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Nombre completo"
-                    android:textColorHint="@color/SoftlyBlack"
+                    android:layout_marginTop="15dp"
+                    android:hint="Nombre"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="50"
                     app:endIconMode="clear_text"
                     app:errorEnabled="true"
-                    app:startIconDrawable="@drawable/ic_person"
-                    app:startIconTint="@color/SoftlyBlack">
+                    app:helperText="Ej: Luis Enrique"
+                    app:startIconDrawable="@drawable/ic_person">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/SoftlyWhite"
                         android:inputType="text"
-                        android:text="Annete Torres"
-                        android:textColor="@color/SoftlyGray" />
+                        android:maxLength="50" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/email"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:hint="Correo Electrónico"
-                    android:textColorHint="@color/SoftlyBlack"
+                    android:layout_marginTop="15dp"
+                    android:hint="Apellidos"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="50"
                     app:endIconMode="clear_text"
                     app:errorEnabled="true"
-                    app:startIconDrawable="@drawable/ic_email"
-                    app:startIconTint="@color/SoftlyBlack">
+                    app:helperText="Ej: Álvarez Ortiz"
+                    app:startIconDrawable="@drawable/ic_person">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/SoftlyWhite"
                         android:inputType="text"
-                        android:text="annete_torres@gmail.com"
-                        android:textColor="@color/SoftlyGray"
-                        app:endIconMode="clear_text" />
+                        android:maxLength="50" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:enabled="false"
+                    android:hint="Correo electrónico"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="50"
+                    app:endIconMode="clear_text"
+                    app:errorEnabled="true"
+                    app:helperText="Ej: luis@gmail.com"
+                    app:startIconDrawable="@drawable/ic_email">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
+                        android:maxLength="50" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/phone"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="15dp"
                     android:hint="Teléfono"
-                    android:textColorHint="@color/SoftlyBlack"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="10"
                     app:endIconMode="clear_text"
                     app:errorEnabled="true"
-                    app:startIconDrawable="@drawable/ic_phone"
-                    app:startIconTint="@color/SoftlyBlack">
+                    app:helperText="Ej: 7774568596"
+                    app:startIconDrawable="@drawable/ic_phone">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="#f7f7f8"
-                        android:inputType="number"
-                        android:text="7******36"
-                        android:textColor="@color/SoftlyGray" />
+                        android:inputType="phone"
+                        android:maxLength="10" />
                 </com.google.android.material.textfield.TextInputLayout>
-
-
-                <Button
-                    android:id="@+id/btnSaveInfo"
-                    android:layout_width="240dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="5dp"
-                    android:drawableLeft="@drawable/ic_save"
-                    android:drawableTint="@color/SoftlyWhite"
-                    android:text="@string/strSaveChanges" />
-
 
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
 
-
         <Button
             android:id="@+id/btnGoToChangePass"
-            android:layout_width="240dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:backgroundTint="@color/SoftlyGray"
-            android:drawableLeft="@drawable/ic_baseline_lock"
+            android:layout_marginTop="15dp"
+            android:backgroundTint="@color/md_theme_light_secondary"
+            android:text="@string/strGoToChangePass"
+            app:icon="@drawable/ic_baseline_lock" />
+
+        <Button
+            android:id="@+id/btnSaveInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:drawableTint="@color/SoftlyWhite"
-            android:text="@string/strGoToChangePass" />
+            android:text="@string/strSaveChanges"
+            app:icon="@drawable/ic_save" />
 
 
     </LinearLayout>
 
-</LinearLayout>
+
+</ScrollView>

@@ -10,25 +10,17 @@
     <string name="strRegisterGoogle">REGISTRARTE CON GOOGLE</string>
     <string name="strRegister">REGISTRARTE</string>
 
-    <!--    RegisterPhoto Activity-->
-    <string name="strTitleRegisterPhoto">Selecciona una</string>
-    <string name="strSubTitleRegisterPhoto">foto</string>
-    <string name="strInstructionsRegisterPhoto">Por favor, no uses lentes, gorras y/o accesorios que puedan interferir en tu rostro. Tu cara se debe ver completamente.</string>
-    <string name="strTakePhoto">Tomar una foto</string>
-    <string name="strSelectPhoto">Seleccionar del álbum de fotos</string>
-
-
     <!--    ChangePassword Activity-->
     <string name="strTitleChangePass">Cambiar</string>
     <string name="strSubTitleChangePass">Contraseña</string>
     <string name="strPassRequest">Ingresa tu contraseña actual. La nueva contraseña debe tener entre 8 a 16 carácteres y debe ser diferente a la anterior.</string>
-    <string name="strChangePass">Cambiar Contraseña</string>
+    <string name="strChangePass">Cambiar contraseña</string>
 
     <!--    Profile Activity-->
-    <string name="strTitleProfile">Información Personal</string>
+    <string name="strTitleProfile">Información personal</string>
     <string name="strEditProfile">Toca un campo para editar</string>
-    <string name="strSaveChanges">Guardar Cambios</string>
-    <string name="strGoToChangePass">Cambiar Contraseña</string>
+    <string name="strSaveChanges">Guardar cambios</string>
+    <string name="strGoToChangePass">Cambiar contraseña</string>
 
     <!--    About Activity-->
     <string name="strTitleAbout">HeyFix</string>
