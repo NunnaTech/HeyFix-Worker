@@ -28,7 +28,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ChangePassword"
+            android:name=".ChangePasswordActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
