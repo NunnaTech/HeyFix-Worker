@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/dimenScreenPadding"
+    tools:context=".AboutActivity">
+
+
+    <ImageView
+        android:layout_width="103dp"
+        android:layout_height="96dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_lightlogo" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/strTitleAbout"
+        android:textAlignment="center"
+        android:textColor="@color/SoftlyBlack"
+        android:textSize="@dimen/dimenTitle"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:text="@string/strSubTitleAbout"
+        android:textAlignment="center"
+        android:textColor="@color/SoftlyGray"
+        android:textSize="@dimen/dimenSubTitle" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="175dp"
+        android:backgroundTint="@color/SoftlyGray">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/developerOne"
+                style="?attr/materialCardViewElevatedStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_marginRight="15dp"
+                            android:contentDescription="asd"
+                            android:scaleType="centerCrop"
+                            app:srcCompat="@drawable/ic_email" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Adame Nájera Raúl G."
+                                android:textColor="@color/SoftlyBlack"
+                                android:textSize="@dimen/dimenText"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Desarrollador Web"
+                                android:textColor="@color/SoftlyGray"
+                                android:textSize="@dimen/dimenText" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="7dp"
+        android:text="@string/strGooglePlay"
+        android:textColor="@color/SoftlyBlack"
+        android:textSize="@dimen/dimenText" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:dividerColor="@color/Primary" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="7dp"
+        android:text="@string/strSocialNetworks"
+        android:textColor="@color/SoftlyBlack"
+        android:textSize="@dimen/dimenText" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:dividerColor="@color/Primary" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:text="@string/strTerms"
+        android:textAlignment="center"
+        android:textColor="@color/SoftlyGray"
+        android:textSize="@dimen/dimenText" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/strPrivacy"
+        android:textAlignment="center"
+        android:textColor="@color/SoftlyGray"
+        android:textSize="@dimen/dimenText" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/strSoftware"
+        android:textAlignment="center"
+        android:textColor="@color/SoftlyGray"
+        android:textSize="@dimen/dimenText" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:text="@string/strBrand"
+        android:textAlignment="center"
+        android:textColor="@color/SoftlyGray"
+        android:textSize="@dimen/dimenText" />
+
+</LinearLayout>

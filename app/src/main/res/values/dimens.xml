@@ -9,4 +9,8 @@
     <!-- SP: Text -->
     <dimen name="dimenTextSplash">40sp</dimen>
     <dimen name="dimenNormalText">20sp</dimen>
+    <dimen name="dimenText">16sp</dimen>
+    <dimen name="dimenTitle">36sp</dimen>
+    <dimen name="dimenSubTitle">30sp</dimen>
+
 </resources>

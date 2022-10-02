@@ -9,4 +9,35 @@
 
     <string name="textAceptarBtn">Aceptar</string>
     <string name="textRechazarBtn">Rechazar</string>
+
+
+    <!--    Register Activity-->
+    <string name="strTitleRegister">Crear nueva</string>
+    <string name="strSubTitleRegister">cuenta</string>
+    <string name="strInstructionsRegister">Por favor, llena los siguientes campos</string>
+    <string name="strRegisterGoogle">REGISTRARTE CON GOOGLE</string>
+    <string name="strRegister">REGISTRARTE</string>
+
+    <!--    ChangePassword Activity-->
+    <string name="strTitleChangePass">Cambiar</string>
+    <string name="strSubTitleChangePass">Contraseña</string>
+    <string name="strPassRequest">Ingresa tu contraseña actual. La nueva contraseña debe tener entre 8 a 16 carácteres y debe ser diferente a la anterior.</string>
+    <string name="strChangePass">Cambiar contraseña</string>
+
+    <!--    Profile Activity-->
+    <string name="strTitleProfile">Información personal</string>
+    <string name="strEditProfile">Toca un campo para editar</string>
+    <string name="strSaveChanges">Guardar cambios</string>
+    <string name="strGoToChangePass">Cambiar contraseña</string>
+
+    <!--    About Activity-->
+    <string name="strTitleAbout">HeyFix</string>
+    <string name="strSubTitleAbout">HeyFix Build V2.0.10</string>
+    <string name="strGooglePlay">Califícanos en Google Play</string>
+    <string name="strSocialNetworks">Síguenos en Redes Sociales</string>
+    <string name="strTerms">TÉRMINOS DE USO</string>
+    <string name="strPrivacy">POLÍTICA DE PRIVACIDAD</string>
+    <string name="strSoftware">SOFTWARE DE CÓDIGO ABIERTO</string>
+    <string name="strBrand">© 2022 ThePandaDevs</string>
+
 </resources>
