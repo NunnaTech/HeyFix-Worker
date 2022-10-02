@@ -8,4 +8,5 @@
 
     <!-- SP: Text -->
     <dimen name="dimenTextSplash">40sp</dimen>
+    <dimen name="dimenNormalText">20sp</dimen>
 </resources>

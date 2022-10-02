@@ -6,4 +6,7 @@
     <string name="strCancelService">Cancelar servicio</string>
     <string name="strFinishService">Finalizar servicio</string>
     <string name="strMap">Mapa</string>
+
+    <string name="textAceptarBtn">Aceptar</string>
+    <string name="textRechazarBtn">Rechazar</string>
 </resources>
