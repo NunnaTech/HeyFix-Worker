@@ -76,7 +76,6 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
             android:backgroundTint="@color/Accent"
             android:text="@string/textAceptarBtn"
             app:icon="@drawable/ic_check" />

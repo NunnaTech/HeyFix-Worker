@@ -8,7 +8,6 @@
     android:padding="@dimen/dimenScreenPadding"
     tools:context=".AboutActivity">
 
-
     <ImageView
         android:layout_width="103dp"
         android:layout_height="96dp"
@@ -34,7 +33,6 @@
         android:textAlignment="center"
         android:textColor="@color/SoftlyGray"
         android:textSize="@dimen/dimenSubTitle" />
-
 
     <ScrollView
         android:layout_width="match_parent"
