@@ -23,7 +23,7 @@
         android:text="@string/strTitleAbout"
         android:textAlignment="center"
         android:textColor="@color/SoftlyBlack"
-        android:textSize="36dp"
+        android:textSize="@dimen/title"
         android:textStyle="bold" />
 
     <TextView
@@ -33,7 +33,7 @@
         android:text="@string/strSubTitleAbout"
         android:textAlignment="center"
         android:textColor="@color/SoftlyGray"
-        android:textSize="16sp" />
+        android:textSize="@dimen/littleSubTitle" />
 
 
     <ScrollView
@@ -84,7 +84,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="Adame Nájera Raúl G."
                                 android:textColor="@color/SoftlyBlack"
-                                android:textSize="20sp"
+                                android:textSize="@dimen/littleTitle"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -92,7 +92,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="Desarrollador Web"
                                 android:textColor="@color/SoftlyGray"
-                                android:textSize="15sp" />
+                                android:textSize="@dimen/text" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -101,280 +101,7 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/developerTwo"
-                style="?attr/materialCardViewElevatedStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:padding="16dp">
-
-                        <!-- Media -->
-                        <ImageView
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginRight="15dp"
-                            android:contentDescription="asd"
-                            android:scaleType="centerCrop"
-                            app:srcCompat="@drawable/ic_email" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Adame Nájera Raúl G."
-                                android:textColor="@color/SoftlyBlack"
-                                android:textSize="20sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Desarrollador Web"
-                                android:textColor="@color/SoftlyGray"
-                                android:textSize="15sp" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/developerThree"
-                style="?attr/materialCardViewElevatedStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:padding="16dp">
-
-                        <!-- Media -->
-                        <ImageView
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginRight="15dp"
-                            android:contentDescription="asd"
-                            android:scaleType="centerCrop"
-                            app:srcCompat="@drawable/ic_email" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Adame Nájera Raúl G."
-                                android:textColor="@color/SoftlyBlack"
-                                android:textSize="20sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Desarrollador Web"
-                                android:textColor="@color/SoftlyGray"
-                                android:textSize="15sp" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/developerFour"
-                style="?attr/materialCardViewElevatedStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:padding="16dp">
-
-                        <!-- Media -->
-                        <ImageView
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginRight="15dp"
-                            android:contentDescription="asd"
-                            android:scaleType="centerCrop"
-                            app:srcCompat="@drawable/ic_email" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Adame Nájera Raúl G."
-                                android:textColor="@color/SoftlyBlack"
-                                android:textSize="20sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Desarrollador Web"
-                                android:textColor="@color/SoftlyGray"
-                                android:textSize="15sp" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/developerFive"
-                style="?attr/materialCardViewElevatedStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:padding="16dp">
-
-                        <!-- Media -->
-                        <ImageView
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginRight="15dp"
-                            android:contentDescription="asd"
-                            android:scaleType="centerCrop"
-                            app:srcCompat="@drawable/ic_email" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Adame Nájera Raúl G."
-                                android:textColor="@color/SoftlyBlack"
-                                android:textSize="20sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Desarrollador Web"
-                                android:textColor="@color/SoftlyGray"
-                                android:textSize="15sp" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/developerSix"
-                style="?attr/materialCardViewElevatedStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:padding="16dp">
-
-                        <!-- Media -->
-                        <ImageView
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginRight="15dp"
-                            android:contentDescription="asd"
-                            android:scaleType="centerCrop"
-                            app:srcCompat="@drawable/ic_email" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Adame Nájera Raúl G."
-                                android:textColor="@color/SoftlyBlack"
-                                android:textSize="20sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Desarrollador Web"
-                                android:textColor="@color/SoftlyGray"
-                                android:textSize="15sp" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
 
@@ -387,7 +114,7 @@
         android:layout_marginBottom="7dp"
         android:text="@string/strGooglePlay"
         android:textColor="@color/SoftlyBlack"
-        android:textSize="20dp" />
+        android:textSize="@dimen/littleTitle" />
 
     <com.google.android.material.divider.MaterialDivider
         android:layout_width="match_parent"
@@ -402,7 +129,7 @@
         android:layout_marginBottom="7dp"
         android:text="@string/strSocialNetworks"
         android:textColor="@color/SoftlyBlack"
-        android:textSize="20dp" />
+        android:textSize="@dimen/littleTitle" />
 
     <com.google.android.material.divider.MaterialDivider
         android:layout_width="match_parent"
@@ -417,7 +144,7 @@
         android:textAlignment="center"
         android:text="@string/strTerms"
         android:textColor="@color/SoftlyGray"
-        android:textSize="16dp" />
+        android:textSize="@dimen/littleSubTitle" />
 
     <TextView
         android:layout_width="match_parent"
@@ -426,7 +153,7 @@
         android:layout_marginTop="15dp"
         android:text="@string/strPrivacy"
         android:textColor="@color/SoftlyGray"
-        android:textSize="16dp" />
+        android:textSize="@dimen/littleSubTitle" />
 
     <TextView
         android:layout_width="match_parent"
@@ -435,7 +162,7 @@
         android:layout_marginTop="15dp"
         android:text="@string/strSoftware"
         android:textColor="@color/SoftlyGray"
-        android:textSize="16dp" />
+        android:textSize="@dimen/littleSubTitle" />
 
     <TextView
         android:layout_width="match_parent"
@@ -444,7 +171,7 @@
         android:layout_marginTop="35dp"
         android:text="@string/strBrand"
         android:textColor="@color/SoftlyGray"
-        android:textSize="14dp" />
+        android:textSize="@dimen/text" />
 
 
 

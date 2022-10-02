@@ -6,4 +6,11 @@
 
     <!-- SP: Text -->
     <dimen name="dimenText">30sp</dimen>
+
+    <dimen name="littleTitle">20sp</dimen>
+    <dimen name="textUser">24sp</dimen>
+    <dimen name="littleSubTitle">16sp</dimen>
+    <dimen name="text">15sp</dimen>
+    <dimen name="title">36sp</dimen>
+
 </resources>

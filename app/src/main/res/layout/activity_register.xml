@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:text="@string/strTitleRegister"
             android:textColor="@color/SoftlyBlack"
-            android:textSize="36dp"
+            android:textSize="@dimen/title"
             android:textStyle="bold" />
 
         <TextView
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:text="@string/strSubTitleRegister"
             android:textColor="@color/Primary"
-            android:textSize="36dp"
+            android:textSize="@dimen/title"
             android:textStyle="bold" />
 
         <View
@@ -43,7 +43,7 @@
             android:layout_marginTop="20dp"
             android:text="@string/strInstructionsRegister"
             android:textColor="@color/SoftlyGray"
-            android:textSize="16sp" />
+            android:textSize="@dimen/littleSubTitle" />
 
 
         <Button
