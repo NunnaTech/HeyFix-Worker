@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/dimenScreenPadding"
+    tools:context=".ServiceActivity">
+
+    <TextView
+        android:id="@+id/tvUsuario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="¡Hola, Jorge!"
+        android:gravity="center"
+        android:textSize="@dimen/dimenNormalText"
+        android:textColor="@color/md_theme_light_primary"
+        android:textStyle="bold"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tienes una nueva oferta de servicio"
+        android:gravity="center"
+        android:textSize="@dimen/dimenNormalText"
+        android:textColor="@color/md_theme_light_primary"
+        android:textStyle="bold"
+        />
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="240dp"
+        android:layout_height="240dp"
+        android:layout_margin="20dp"
+        android:layout_gravity="center"
+        android:src="@color/md_theme_light_primary"/>
+    <TextView
+        android:id="@+id/tvDireccion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Calle Las Lomas No.45 Col.Alta Palmira Temixco, Morelos"
+        android:gravity="center"
+        android:textSize="@dimen/dimenNormalText"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_weight="2">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/Accent"
+                android:text="@string/textAceptarBtn"
+                android:layout_gravity="left"
+                app:icon="@drawable/ic_check"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_weight="1">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/md_theme_light_tertiary"
+                android:text="@string/textRechazarBtn"
+                app:icon="@drawable/ic_close"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
