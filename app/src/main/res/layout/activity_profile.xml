@@ -70,7 +70,7 @@
                     android:textSize="@dimen/dimenText"
                     android:textStyle="bold"
                     app:drawableStartCompat="@drawable/ic_info"
-                    app:drawableTint="@color/Primary" />
+                    app:drawableTint="@color/md_theme_light_primary" />
 
                 <TextView
                     android:layout_width="match_parent"
