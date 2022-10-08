@@ -1,59 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="@dimen/dimenScreenPadding"
-    tools:context=".AboutActivity">
+    tools:context=".RegisterActivity">
 
-    <ImageView
-        android:layout_width="103dp"
-        android:layout_height="96dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="15dp"
-        android:contentDescription="@string/app_name"
-        android:src="@drawable/ic_lightlogo" />
-
-    <TextView
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/ablAPp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/strTitleAbout"
-        android:textAlignment="center"
-        android:textColor="@color/SoftlyBlack"
-        android:textSize="@dimen/dimenTitle"
-        android:textStyle="bold" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:text="@string/strSubTitleAbout"
-        android:textAlignment="center"
-        android:textColor="@color/SoftlyGray"
-        android:textSize="@dimen/dimenSubTitle" />
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/tbApp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:navigationIcon="@drawable/ic_arrow_back"
+            app:title="Sobre nosotros" />
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <ScrollView
+        android:id="@+id/llMain"
         android:layout_width="match_parent"
-        android:layout_height="175dp"
-        android:backgroundTint="@color/SoftlyGray">
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ablAPp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="@dimen/dimenScreenPadding">
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/developerOne"
-                style="?attr/materialCardViewElevatedStyle"
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_lightlogo" />
+
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp">
+                android:text="@string/strTitleAbout"
+                android:textAlignment="center"
+                android:textColor="@color/SoftlyBlack"
+                android:textSize="@dimen/dimenTitle"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/strSubTitleAbout"
+                android:textAlignment="center"
+                android:textColor="@color/SoftlyGray"
+                android:textSize="@dimen/dimenSubTitle" />
+
+        <!--    <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:itemCount="5"
+                tools:listitem="@layout/item_member" />-->
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:checkable="false"
+                android:clickable="true"
+                android:focusable="false">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:orientation="vertical">
 
                     <LinearLayout
@@ -62,24 +87,22 @@
                         android:orientation="horizontal"
                         android:padding="16dp">
 
-                        <ImageView
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginRight="15dp"
-                            android:contentDescription="asd"
-                            android:scaleType="centerCrop"
-                            app:srcCompat="@drawable/ic_email" />
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@color/Accent"/>
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="5dp"
+                            android:gravity="center_vertical"
                             android:orientation="vertical">
-
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Adame Nájera Raúl G."
+                                android:text="Name"
                                 android:textColor="@color/SoftlyBlack"
                                 android:textSize="@dimen/dimenText"
                                 android:textStyle="bold" />
@@ -87,78 +110,234 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Desarrollador Web"
+                                android:text="Job"
                                 android:textColor="@color/SoftlyGray"
                                 android:textSize="@dimen/dimenText" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:checkable="false"
+                android:clickable="true"
+                android:focusable="false">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="16dp">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@color/Accent"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="5dp"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Name"
+                                android:textColor="@color/SoftlyBlack"
+                                android:textSize="@dimen/dimenText"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Job"
+                                android:textColor="@color/SoftlyGray"
+                                android:textSize="@dimen/dimenText" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:checkable="false"
+                android:clickable="true"
+                android:focusable="false">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="16dp">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@color/Accent"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="5dp"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Name"
+                                android:textColor="@color/SoftlyBlack"
+                                android:textSize="@dimen/dimenText"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Job"
+                                android:textColor="@color/SoftlyGray"
+                                android:textSize="@dimen/dimenText" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:checkable="false"
+                android:clickable="true"
+                android:focusable="false">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="16dp">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@color/Accent"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="5dp"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Name"
+                                android:textColor="@color/SoftlyBlack"
+                                android:textSize="@dimen/dimenText"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Job"
+                                android:textColor="@color/SoftlyGray"
+                                android:textSize="@dimen/dimenText" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="@string/strGooglePlay"
+                android:textColor="@color/SoftlyBlack"
+                android:textSize="@dimen/dimenText" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                app:dividerColor="@color/md_theme_light_primary" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/strSocialNetworks"
+                android:textColor="@color/SoftlyBlack"
+                android:textSize="@dimen/dimenText" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                app:dividerColor="@color/md_theme_light_primary" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="@string/strTerms"
+                android:textAlignment="center"
+                android:textColor="@color/SoftlyGray"
+                android:textSize="@dimen/dimenText" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="@string/strPrivacy"
+                android:textAlignment="center"
+                android:textColor="@color/SoftlyGray"
+                android:textSize="@dimen/dimenText" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="@string/strSoftware"
+                android:textAlignment="center"
+                android:textColor="@color/SoftlyGray"
+                android:textSize="@dimen/dimenText" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="50dp"
+                android:text="@string/strBrand"
+                android:textAlignment="center"
+                android:textColor="@color/SoftlyGray"
+                android:textSize="@dimen/dimenText" />
         </LinearLayout>
     </ScrollView>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="7dp"
-        android:text="@string/strGooglePlay"
-        android:textColor="@color/SoftlyBlack"
-        android:textSize="@dimen/dimenText" />
-
-    <com.google.android.material.divider.MaterialDivider
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:dividerColor="@color/md_theme_light_primary" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="7dp"
-        android:text="@string/strSocialNetworks"
-        android:textColor="@color/SoftlyBlack"
-        android:textSize="@dimen/dimenText" />
-
-    <com.google.android.material.divider.MaterialDivider
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:dividerColor="@color/md_theme_light_primary" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
-        android:text="@string/strTerms"
-        android:textAlignment="center"
-        android:textColor="@color/SoftlyGray"
-        android:textSize="@dimen/dimenText" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="@string/strPrivacy"
-        android:textAlignment="center"
-        android:textColor="@color/SoftlyGray"
-        android:textSize="@dimen/dimenText" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="@string/strSoftware"
-        android:textAlignment="center"
-        android:textColor="@color/SoftlyGray"
-        android:textSize="@dimen/dimenText" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
-        android:text="@string/strBrand"
-        android:textAlignment="center"
-        android:textColor="@color/SoftlyGray"
-        android:textSize="@dimen/dimenText" />
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,6 +2,7 @@ package com.pandadevs.heyfix_worker
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.pandadevs.heyfix_worker.databinding.ActivityRegisterBinding
 
 class RegisterActivity : AppCompatActivity() {
@@ -13,5 +14,6 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(R.layout.activity_register)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.tbApp.setNavigationOnClickListener { finish() }
     }
 }

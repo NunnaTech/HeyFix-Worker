@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">HeyFix-Worker</string>
-    <string name="strArrived">¡He llegado!</string>
+    <string name="strArrived">Llegué</string>
     <string name="strChat">Chat</string>
     <string name="strCancelService">Cancelar servicio</string>
     <string name="strFinishService">Finalizar servicio</string>
@@ -29,15 +29,18 @@
     <string name="strEditProfile">Toca un campo para editar</string>
     <string name="strSaveChanges">Guardar cambios</string>
     <string name="strGoToChangePass">Cambiar contraseña</string>
+    <string name="strGoToAbout">Sobre nosotros</string>
 
     <!--    About Activity-->
     <string name="strTitleAbout">HeyFix</string>
-    <string name="strSubTitleAbout">HeyFix Build V2.0.10</string>
+    <string name="strSubTitleAbout">v1.0</string>
     <string name="strGooglePlay">Califícanos en Google Play</string>
     <string name="strSocialNetworks">Síguenos en Redes Sociales</string>
     <string name="strTerms">TÉRMINOS DE USO</string>
     <string name="strPrivacy">POLÍTICA DE PRIVACIDAD</string>
     <string name="strSoftware">SOFTWARE DE CÓDIGO ABIERTO</string>
     <string name="strBrand">© 2022 ThePandaDevs</string>
+
+
 
 </resources>

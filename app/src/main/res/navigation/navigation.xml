@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@+id/itHome">
+
+    <fragment
+        android:id="@+id/itHome"
+        android:name="com.pandadevs.heyfix_worker.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/itServices"
+        android:name="com.pandadevs.heyfix_worker.ServiceFragment"
+        android:label="fragment_service"
+        tools:layout="@layout/fragment_service" />
+
+    <fragment
+        android:id="@+id/itProfile"
+        android:name="com.pandadevs.heyfix_worker.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+
+    </fragment>
+
+</navigation>

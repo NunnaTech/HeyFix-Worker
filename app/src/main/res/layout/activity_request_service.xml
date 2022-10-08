@@ -4,8 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/dimenScreenPadding"
     tools:context=".RequestServiceActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/ablAPp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/md_theme_light_primary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/tbApp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:navigationIcon="@drawable/ic_arrow_back"
+            app:navigationIconTint="@color/SoftlyWhite"
+            app:title="Persona"
+            app:titleTextColor="@color/SoftlyWhite" />
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
         android:layout_width="match_parent"
@@ -15,13 +34,14 @@
         app:layout_constraintBottom_toTopOf="@+id/llGroupButtons"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/ablAPp" />
 
     <LinearLayout
         android:id="@+id/llGroupButtons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:padding="@dimen/dimenScreenPadding"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="20dp">
 
@@ -32,9 +52,9 @@
             android:orientation="horizontal">
 
             <Button
-                android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:backgroundTint="@color/Accent"
                 android:text="@string/strArrived"
                 app:icon="@drawable/ic_directions" />
@@ -45,9 +65,10 @@
                 android:layout_marginHorizontal="10dp" />
 
             <Button
-                android:layout_weight="1"
+                android:id="@+id/btnChat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:backgroundTint="@color/md_theme_light_secondary"
                 android:text="@string/strChat"
                 app:icon="@drawable/ic_chat" />
