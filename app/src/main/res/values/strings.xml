@@ -10,6 +10,9 @@
     <string name="textAceptarBtn">Aceptar</string>
     <string name="textRechazarBtn">Rechazar</string>
 
+    <!--    Home Fragment-->
+    <string name="strHistoryServices">Historial de servicios</string>
+    <string name="strHistoryServicesEmpty">No hay historial de servicios</string>
 
     <!--    Register Activity-->
     <string name="strTitleRegister">Crear nueva</string>

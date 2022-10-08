@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Buenos días,"
-            android:textSize="35sp"
+            android:textSize="@dimen/dimenTitle"
             android:textStyle="bold" />
 
         <TextView
@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:text="Hector"
             android:textColor="@color/md_theme_light_primary"
-            android:textSize="30sp"
+            android:textSize="@dimen/dimenTitle"
             android:textStyle="bold" />
 
         <com.google.android.material.card.MaterialCardView
@@ -80,7 +80,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Historial de servicios"
+            android:text="@string/strHistoryServices"
             android:textColor="@color/md_theme_light_primary"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -89,7 +89,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="No hay historial de servicios"
+            android:text="@string/strHistoryServicesEmpty"
             android:visibility="visible" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -97,7 +97,6 @@
             android:layout_height="wrap_content"
             tools:itemCount="4"
             tools:listitem="@layout/item_service" />
-
 
     </LinearLayout>
 
