@@ -82,10 +82,11 @@
                         android:textSize="@dimen/dimenText" />
 
                     <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/etName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
-                        android:hint="Nombre"
+                        android:hint="@string/strName"
                         app:counterEnabled="true"
                         app:counterMaxLength="50"
                         app:endIconMode="clear_text"
@@ -102,10 +103,11 @@
 
 
                     <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/etLastName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
-                        android:hint="Apellidos"
+                        android:hint="@string/strLastname"
                         app:counterEnabled="true"
                         app:counterMaxLength="50"
                         app:endIconMode="clear_text"
@@ -120,13 +122,52 @@
                             android:maxLength="50" />
                     </com.google.android.material.textfield.TextInputLayout>
 
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/etWork"
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:hint="@string/strWork"
+                        app:errorEnabled="true"
+                        app:helperText="Ej: Plomería"
+                        app:startIconDrawable="@drawable/ic_services">
+
+                        <AutoCompleteTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textFilter"
+                            app:simpleItems="@array/strArrayExample" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/etTransport"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:hint="@string/strCar"
+                        app:counterEnabled="true"
+                        app:counterMaxLength="80"
+                        app:endIconMode="clear_text"
+                        app:errorEnabled="true"
+                        app:helperText="Ej: Nissan Versa 2021 Blanco"
+                        app:startIconDrawable="@drawable/ic_car">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:maxLength="80" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/etEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
                         android:enabled="false"
-                        android:hint="Correo electrónico"
+                        android:hint="@string/strEmail"
                         app:counterEnabled="true"
                         app:counterMaxLength="50"
                         app:endIconMode="clear_text"
@@ -142,10 +183,11 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/etPhone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
-                        android:hint="Teléfono"
+                        android:hint="@string/strPhone"
                         app:counterEnabled="true"
                         app:counterMaxLength="10"
                         app:endIconMode="clear_text"
@@ -182,9 +224,9 @@
                 android:id="@+id/btnAbout"
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="match_parent"
-                android:textColor="@color/md_theme_light_secondary"
                 android:layout_height="wrap_content"
-                android:text="@string/strGoToAbout" />
+                android:text="@string/strGoToAbout"
+                android:textColor="@color/md_theme_light_secondary" />
         </LinearLayout>
     </ScrollView>
 </FrameLayout>

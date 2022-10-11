@@ -26,10 +26,10 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/tvDetail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tienes una nueva oferta de servicio"
+            android:text="@string/strServiceDetails"
             android:textSize="@dimen/dimenNormalText"
             app:layout_constraintTop_toBottomOf="@+id/tvUsuario"
             tools:layout_editor_absoluteX="20dp" />
@@ -38,10 +38,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+            app:layout_constraintBottom_toTopOf="@+id/llMain"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2">
+            app:layout_constraintTop_toBottomOf="@+id/tvDetail">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="240dp"
@@ -51,7 +51,7 @@
                 android:src="@color/Accent" />
 
             <TextView
-                android:id="@+id/tvDireccion"
+                android:id="@+id/tvDirection"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -61,7 +61,7 @@
 
 
         <LinearLayout
-            android:id="@+id/linearLayout"
+            android:id="@+id/llMain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -75,7 +75,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/md_theme_light_tertiary"
-                android:text="@string/textRechazarBtn"
+                android:text="@string/strReject"
                 app:icon="@drawable/ic_close" />
 
             <Button
@@ -83,7 +83,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/Accent"
-                android:text="@string/textAceptarBtn"
+                android:text="@string/strAccept"
                 app:icon="@drawable/ic_check" />
 
         </LinearLayout>

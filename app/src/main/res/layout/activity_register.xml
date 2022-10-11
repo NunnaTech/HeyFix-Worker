@@ -36,11 +36,10 @@
             android:orientation="vertical"
             android:padding="@dimen/dimenScreenPadding">
 
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Crear nueva"
+                android:text="@string/strCreateNew"
                 android:textColor="@color/SoftlyBlack"
                 android:textSize="@dimen/dimenTitle"
                 android:textStyle="bold" />
@@ -48,7 +47,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="cuenta"
+                android:text="@string/strAccount"
                 android:textColor="@color/md_theme_light_primary"
                 android:textSize="@dimen/dimenTitle"
                 android:textStyle="bold" />
@@ -63,7 +62,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Por favor, llena los siguientes campos:"
+                android:text="@string/strDescription"
                 android:textSize="@dimen/dimenText" />
 
             <Button
@@ -73,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="20dp"
                 android:drawableLeft="@drawable/ic_google_icon"
-                android:text="Registrate con Google" />
+                android:text="@string/strRegisterWithGoogle" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -91,7 +90,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
                     android:gravity="center"
-                    android:text="o"
+                    android:text="@string/strO"
                     android:textColor="@color/SoftlyGray" />
 
                 <View
@@ -102,10 +101,11 @@
             </LinearLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/etName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:hint="Nombre"
+                android:hint="@string/strName"
                 app:counterEnabled="true"
                 app:counterMaxLength="50"
                 app:endIconMode="clear_text"
@@ -120,12 +120,12 @@
                     android:maxLength="50" />
             </com.google.android.material.textfield.TextInputLayout>
 
-
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/etLastName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:hint="Apellidos"
+                android:hint="@string/strLastname"
                 app:counterEnabled="true"
                 app:counterMaxLength="50"
                 app:endIconMode="clear_text"
@@ -140,12 +140,51 @@
                     android:maxLength="50" />
             </com.google.android.material.textfield.TextInputLayout>
 
-
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/etWork"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:hint="Correo electrónico"
+                android:hint="@string/strWork"
+                app:errorEnabled="true"
+                app:helperText="Ej: Plomería"
+                app:startIconDrawable="@drawable/ic_services">
+
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textFilter"
+                    app:simpleItems="@array/strArrayExample" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/etTransport"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:hint="@string/strCar"
+                app:counterEnabled="true"
+                app:counterMaxLength="80"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:helperText="Ej: Nissan Versa 2021 Blanco"
+                app:startIconDrawable="@drawable/ic_car">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:maxLength="80" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:hint="@string/strEmail"
                 app:counterEnabled="true"
                 app:counterMaxLength="50"
                 app:endIconMode="clear_text"
@@ -160,12 +199,12 @@
                     android:maxLength="50" />
             </com.google.android.material.textfield.TextInputLayout>
 
-
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/etNewPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:hint="Nueva contraseña"
+                android:hint="@string/strNewPassword"
                 app:counterEnabled="true"
                 app:counterMaxLength="10"
                 app:endIconMode="password_toggle"
@@ -181,10 +220,11 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/etRepeatNewPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:hint="Repetir nueva contraseña"
+                android:hint="@string/strRepeatNewPassword"
                 app:counterEnabled="true"
                 app:counterMaxLength="10"
                 app:endIconMode="password_toggle"
@@ -205,8 +245,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="60dp"
-                android:text="Registrarse" />
-
+                android:text="@string/strRegister" />
         </LinearLayout>
     </ScrollView>
 

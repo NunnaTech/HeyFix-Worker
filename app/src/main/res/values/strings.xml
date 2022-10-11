@@ -1,31 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">HeyFix-Worker</string>
-    <string name="strArrived">Llegué</string>
-    <string name="strChat">Chat</string>
-    <string name="strCancelService">Cancelar servicio</string>
-    <string name="strFinishService">Finalizar servicio</string>
-    <string name="strMap">Mapa</string>
-
-    <string name="textAceptarBtn">Aceptar</string>
-    <string name="textRechazarBtn">Rechazar</string>
 
     <!--    Home Fragment-->
     <string name="strHistoryServices">Historial de servicios</string>
     <string name="strHistoryServicesEmpty">No hay historial de servicios</string>
+    <string name="strAverageRates">Promedio de tus calificaciones</string>
+    <string name="strAverageDetails">Has alcanzo un total de todos los servicios realizados de:</string>
 
-    <!--    Register Activity-->
-    <string name="strTitleRegister">Crear nueva</string>
-    <string name="strSubTitleRegister">cuenta</string>
-    <string name="strInstructionsRegister">Por favor, llena los siguientes campos</string>
-    <string name="strRegisterGoogle">REGISTRARTE CON GOOGLE</string>
-    <string name="strRegister">REGISTRARTE</string>
 
     <!--    ChangePassword Activity-->
     <string name="strTitleChangePass">Cambiar</string>
     <string name="strSubTitleChangePass">Contraseña</string>
-    <string name="strPassRequest">Ingresa tu contraseña actual. La nueva contraseña debe tener entre 8 a 16 carácteres y debe ser diferente a la anterior.</string>
-    <string name="strChangePass">Cambiar contraseña</string>
+    <string name="strPassRequest">Ingresa tu contraseña actual, una nueva contraseña y su confirmación, demás estas deben tener entre 8 a 10 carácteres</string>
+    <string name="strChangePass">Cambiar Contraseña</string>
+    <string name="strCurrentlyPassword">Contraseña actual</string>
+    <string name="strNewPassword">Nueva contraseña</string>
+    <string name="strRepeatNewPassword">Repetir nueva contraseña</string>
 
     <!--    Profile Activity-->
     <string name="strTitleProfile">Información personal</string>
@@ -35,6 +26,7 @@
     <string name="strGoToAbout">Sobre nosotros</string>
 
     <!--    About Activity-->
+    <string name="strAbourBar">Sobre nosotros</string>
     <string name="strTitleAbout">HeyFix</string>
     <string name="strSubTitleAbout">v1.0</string>
     <string name="strGooglePlay">Califícanos en Google Play</string>
@@ -44,6 +36,47 @@
     <string name="strSoftware">SOFTWARE DE CÓDIGO ABIERTO</string>
     <string name="strBrand">© 2022 ThePandaDevs</string>
 
+    <!--    Chat activity-->
+    <string name="strTypeMessage">Escribe un mensaje</string>
 
+    <!--  Login Activity  -->
+    <string name="strLog">Inicio de</string>
+    <string name="strIn">sesión</string>
+    <string name="strLogInWithGoogle">Iniciar con Google</string>
+    <string name="strWelcome">Inicia sesión para poder encontrar con personas que necesitan de tu servicio.</string>
+    <string name="strPassword">Contraseña</string>
+    <string name="strEmail">Correo electrónico</string>
+    <string name="strRegister">Registrarse</string>
+    <string name="strLogin">Iniciar sesión</string>
+    <string name="strO">o</string>
+
+    <!--    Register Activity-->
+    <string name="strCreateNew">Crear nueva</string>
+    <string name="strAccount">cuenta</string>
+    <string name="strDescription">Por favor, llena los siguientes campos:</string>
+    <string name="strRegisterWithGoogle">Registrate con Google</string>
+    <string name="strName">Nombre</string>
+    <string name="strLastname">Apellidos</string>
+    <string name="strWork">Tipo de trabajo</string>
+    <string name="strCar">Transporte que usas</string>
+    <string-array name="strArrayExample">
+        <item>Plomería</item>
+        <item>Carpintería</item>
+    </string-array>
+
+    <!--  Request service Activity  -->
+    <string name="strServiceInProgress">Servicio en proceso</string>
+    <string name="strGoToChat">Chat</string>
+    <string name="strCancelService">Cancelar servicio</string>
+    <string name="strArrived">Llegué</string>
+    <string name="strFinishService">Finalizar servicio</string>
+
+    <!--   Profile Fragment-->
+    <string name="strPhone">Teléfono</string>
+
+    <!--   Service Fragment-->
+    <string name="strServiceDetails">Tienes una nueva oferta de trabajo</string>
+    <string name="strAccept">Aceptar</string>
+    <string name="strReject">Rechazar</string>
 
 </resources>

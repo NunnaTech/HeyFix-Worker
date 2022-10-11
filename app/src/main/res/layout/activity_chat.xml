@@ -25,7 +25,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
+        android:id="@+id/clMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/SoftlyBlack"
@@ -45,42 +45,44 @@
 
 
         <TextView
+            android:id="@+id/tvName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:text="Mario Nava"
+            android:layout_marginStart="5dp"
+            android:text="Person"
+            tools:text="Mario Nava"
             android:textColor="@color/md_theme_light_surface"
-            android:textSize="20dp"
+            android:textSize="@dimen/dimenNormalText"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/circleImageView"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/tvCar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nissan Versa 2021"
+            android:text="Car"
+            tools:text="Nissan Versa 2021"
             android:textColor="@color/SoftlyGray"
-            android:textSize="15dp"
+            android:textSize="@dimen/dimenText"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvChat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Contenido"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintBottom_toTopOf="@+id/llBottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
-
+        app:layout_constraintTop_toBottomOf="@+id/clMain" />
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/llBottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -89,10 +91,11 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="wrap_content"
+            android:id="@+id/etMessage"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="8"
-            android:hint="Mensaje"
+            android:hint="@string/strTypeMessage"
             app:endIconMode="clear_text">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -103,11 +106,12 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floating_action_button"
+            android:id="@+id/btnSend"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            app:srcCompat="@drawable/ic_send" />
+            android:layout_marginStart="10dp"
+            app:srcCompat="@drawable/ic_send"
+            android:contentDescription="@string/strTypeMessage" />
 
     </LinearLayout>
 

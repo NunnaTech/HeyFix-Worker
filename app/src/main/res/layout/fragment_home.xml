@@ -13,6 +13,7 @@
         tools:context=".HomeActivity">
 
         <TextView
+            android:id="@+id/tvWelcome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Buenos días,"
@@ -20,6 +21,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/tvName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Hector"
@@ -46,7 +48,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Promedio de tus calificaciones"
+                    android:text="@string/strAverageRates"
                     android:textColor="@color/md_theme_light_secondary"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -54,7 +56,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Has alcanzo un total de todos los servicios realizados de:" />
+                    android:text="@string/strAverageDetails" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -69,6 +71,7 @@
                         android:backgroundTint="#DCE000" />
 
                     <TextView
+                        android:id="@+id/tvRate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="9.9"
