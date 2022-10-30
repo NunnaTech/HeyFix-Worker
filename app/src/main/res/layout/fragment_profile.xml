@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileFragment">
+    tools:context=".view.ProfileFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -91,7 +91,7 @@
                         app:counterMaxLength="50"
                         app:endIconMode="clear_text"
                         app:errorEnabled="true"
-                        app:helperText="Ej: Luis Enrique"
+                        app:helperText="* Requerido"
                         app:startIconDrawable="@drawable/ic_person">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -112,7 +112,7 @@
                         app:counterMaxLength="50"
                         app:endIconMode="clear_text"
                         app:errorEnabled="true"
-                        app:helperText="Ej: Álvarez Ortiz"
+                        app:helperText="* Requerido"
                         app:startIconDrawable="@drawable/ic_person">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -130,7 +130,7 @@
                         android:layout_marginTop="15dp"
                         android:hint="@string/strWork"
                         app:errorEnabled="true"
-                        app:helperText="Ej: Plomería"
+                        app:helperText="* Requerido"
                         app:startIconDrawable="@drawable/ic_services">
 
                         <AutoCompleteTextView
@@ -151,7 +151,7 @@
                         app:counterMaxLength="80"
                         app:endIconMode="clear_text"
                         app:errorEnabled="true"
-                        app:helperText="Ej: Nissan Versa 2021 Blanco"
+                        app:helperText="* Requerido"
                         app:startIconDrawable="@drawable/ic_car">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -172,7 +172,6 @@
                         app:counterMaxLength="50"
                         app:endIconMode="clear_text"
                         app:errorEnabled="true"
-                        app:helperText="Ej: luis@gmail.com"
                         app:startIconDrawable="@drawable/ic_email">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -192,7 +191,7 @@
                         app:counterMaxLength="10"
                         app:endIconMode="clear_text"
                         app:errorEnabled="true"
-                        app:helperText="Ej: 7774568596"
+                        app:helperText="* Requerido"
                         app:startIconDrawable="@drawable/ic_phone">
 
                         <com.google.android.material.textfield.TextInputEditText

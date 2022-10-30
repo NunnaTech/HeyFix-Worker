@@ -1,8 +1,9 @@
-package com.pandadevs.heyfix_worker
+package com.pandadevs.heyfix_worker.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.pandadevs.heyfix_worker.R
 import com.pandadevs.heyfix_worker.databinding.ActivityAboutBinding
 
 class AboutActivity : AppCompatActivity() {

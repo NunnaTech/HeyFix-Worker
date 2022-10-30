@@ -1,11 +1,11 @@
-package com.pandadevs.heyfix_worker
+package com.pandadevs.heyfix_worker.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.pandadevs.heyfix_worker.R
 import com.pandadevs.heyfix_worker.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

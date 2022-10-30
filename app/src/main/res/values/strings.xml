@@ -59,6 +59,8 @@
     <string name="strLastname">Apellidos</string>
     <string name="strWork">Tipo de trabajo</string>
     <string name="strCar">Transporte que usas</string>
+    <string name="strNameNotValid">El campo tiene caracteres no válidos</string>
+    <string name="strNotValid">El campo no debe estar vacío</string>
     <string-array name="strArrayExample">
         <item>Plomería</item>
         <item>Carpintería</item>

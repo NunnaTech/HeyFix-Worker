@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/dimenScreenPadding"
-    tools:context=".RegisterActivity">
+    tools:context=".view.RegisterActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -91,7 +91,7 @@
             app:counterMaxLength="50"
             app:endIconMode="clear_text"
             app:errorEnabled="true"
-            app:helperText="Ej: raul@gmail.com"
+            app:helperText="* Requerido"
             app:startIconDrawable="@drawable/ic_email">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -111,7 +111,7 @@
             app:counterMaxLength="10"
             app:endIconMode="password_toggle"
             app:errorEnabled="true"
-            app:helperText="Ej: *******"
+            app:helperText="* Requerido"
             app:startIconDrawable="@drawable/ic_key">
 
             <com.google.android.material.textfield.TextInputEditText

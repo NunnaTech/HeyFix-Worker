@@ -2,9 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clMain"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity">
+    tools:context=".view.RegisterActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/ablAPp"
@@ -110,7 +111,7 @@
                 app:counterMaxLength="50"
                 app:endIconMode="clear_text"
                 app:errorEnabled="true"
-                app:helperText="Ej: Héctor"
+                app:helperText="* Requerido"
                 app:startIconDrawable="@drawable/ic_person">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -130,7 +131,7 @@
                 app:counterMaxLength="50"
                 app:endIconMode="clear_text"
                 app:errorEnabled="true"
-                app:helperText="Ej: Saldaña Espinoza"
+                app:helperText="* Requerido"
                 app:startIconDrawable="@drawable/ic_person">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -148,7 +149,7 @@
                 android:layout_marginTop="15dp"
                 android:hint="@string/strWork"
                 app:errorEnabled="true"
-                app:helperText="Ej: Plomería"
+                app:helperText="* Requerido"
                 app:startIconDrawable="@drawable/ic_services">
 
                 <AutoCompleteTextView
@@ -169,7 +170,7 @@
                 app:counterMaxLength="80"
                 app:endIconMode="clear_text"
                 app:errorEnabled="true"
-                app:helperText="Ej: Nissan Versa 2021 Blanco"
+                app:helperText="* Requerido"
                 app:startIconDrawable="@drawable/ic_car">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -189,7 +190,7 @@
                 app:counterMaxLength="50"
                 app:endIconMode="clear_text"
                 app:errorEnabled="true"
-                app:helperText="Ej: hector@gmail.com"
+                app:helperText="* Requerido"
                 app:startIconDrawable="@drawable/ic_email">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -197,6 +198,26 @@
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"
                     android:maxLength="50" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/etPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:hint="@string/strPhone"
+                app:counterEnabled="true"
+                app:counterMaxLength="10"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:helperText="* Requerido"
+                app:startIconDrawable="@drawable/ic_phone">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:maxLength="10" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -209,7 +230,7 @@
                 app:counterMaxLength="10"
                 app:endIconMode="password_toggle"
                 app:errorEnabled="true"
-                app:helperText="Ej: *******"
+                app:helperText="* Requerido"
                 app:startIconDrawable="@drawable/ic_key">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -229,7 +250,7 @@
                 app:counterMaxLength="10"
                 app:endIconMode="password_toggle"
                 app:errorEnabled="true"
-                app:helperText="Ej: *******"
+                app:helperText="* Requerido"
                 app:startIconDrawable="@drawable/ic_key">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -240,7 +261,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:id="@+id/btnLogin"
+                android:id="@+id/btnRegister"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="15dp"

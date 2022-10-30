@@ -1,4 +1,4 @@
-package com.pandadevs.heyfix_worker
+package com.pandadevs.heyfix_worker.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
