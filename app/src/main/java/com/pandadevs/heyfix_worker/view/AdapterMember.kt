@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.pandadevs.heyfix_worker.R
+import com.pandadevs.heyfix_worker.data.model.Member
 import com.pandadevs.heyfix_worker.databinding.ItemMemberBinding
 
 class AdapterMember(private val list: List<Member>, private val context: Context) :

@@ -2,12 +2,11 @@ package com.pandadevs.heyfix_worker.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Patterns
 import androidx.core.widget.doOnTextChanged
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
 import com.pandadevs.heyfix_worker.R
 import com.pandadevs.heyfix_worker.databinding.ActivityRegisterBinding
+import com.pandadevs.heyfix_worker.utils.SnackbarShow
 
 class RegisterActivity : AppCompatActivity() {
 

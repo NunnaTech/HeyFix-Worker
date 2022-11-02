@@ -1,4 +1,4 @@
-package com.pandadevs.heyfix_worker.view
+package com.pandadevs.heyfix_worker.data.model
 
 data class Member(
     val name: String,

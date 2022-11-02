@@ -9,6 +9,9 @@ import android.view.ViewGroup
 import androidx.core.widget.doOnTextChanged
 import com.google.android.material.textfield.TextInputLayout
 import com.pandadevs.heyfix_worker.databinding.FragmentProfileBinding
+import com.pandadevs.heyfix_worker.utils.SnackbarShow
+import com.pandadevs.heyfix_worker.utils.Validations.fieldNotEmpty
+import com.pandadevs.heyfix_worker.utils.Validations.fieldRegexName
 
 class ProfileFragment : Fragment() {
 
@@ -18,20 +21,10 @@ class ProfileFragment : Fragment() {
     private var editsInputsList: List<TextInputLayout> = listOf()
     private var areCorrectFieldsList: MutableList<Boolean> = mutableListOf()
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
 
-        editsInputsList = listOf(
-            binding.etName,
-            binding.etLastName,
-            binding.etWork,
-            binding.etTransport,
-            binding.etPhone
-        )
+        editsInputsList = listOf(binding.etName, binding.etLastName, binding.etWork, binding.etTransport, binding.etPhone)
         areCorrectFieldsList = mutableListOf(false, false, false, false, false)
 
         binding.btnChangePass.setOnClickListener { goToActivity(ChangePasswordActivity::class.java) }
@@ -85,31 +78,5 @@ class ProfileFragment : Fragment() {
         binding.etPhone.editText?.doOnTextChanged { text, _, _, _ ->
             areCorrectFieldsList[4] = fieldNotEmpty(editsInputsList[4], text.toString(), 10)
         }
-
     }
-
-    private fun fieldNotEmpty(field: TextInputLayout, text: String, min: Int = 6): Boolean {
-        val isCorrectField = text.isNotEmpty() && text.length >= min
-        if (isCorrectField) {
-            field.error = null
-            field.helperText = "* Requerido"
-        } else {
-            field.helperText = null
-            field.error = "Debe contener al menos $min caracteres"
-        }
-        return isCorrectField
-    }
-
-    private fun fieldRegexName(field: TextInputLayout, text: String): Boolean {
-        val isCorrectField = Regex("^[A-Za-zÁÉÍÓÚÑáéíóúñ. ]*$").matches(text)
-        if (isCorrectField) {
-            field.error = null
-            field.helperText = "* Requerido"
-        } else {
-            field.helperText = null
-            field.error = "Debe de contener caracteres válidos"
-        }
-        return isCorrectField
-    }
-
 }

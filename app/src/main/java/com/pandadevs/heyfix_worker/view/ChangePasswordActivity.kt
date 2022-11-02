@@ -5,6 +5,8 @@ import android.os.Bundle
 import androidx.core.widget.doOnTextChanged
 import com.google.android.material.textfield.TextInputLayout
 import com.pandadevs.heyfix_worker.databinding.ActivityChangePasswordBinding
+import com.pandadevs.heyfix_worker.utils.SnackbarShow
+import com.pandadevs.heyfix_worker.utils.Validations.fieldNotEmpty
 
 class ChangePasswordActivity : AppCompatActivity() {
 
@@ -18,8 +20,7 @@ class ChangePasswordActivity : AppCompatActivity() {
         setContentView(binding.root)
         binding.tbApp.setNavigationOnClickListener { finish() }
 
-        editsInputsList =
-            listOf(binding.etCurrentlyPassword, binding.etNewPassword, binding.etRepeatNewPassword)
+        editsInputsList = listOf(binding.etCurrentlyPassword, binding.etNewPassword, binding.etRepeatNewPassword)
         areCorrectFieldsList = mutableListOf(false, false, false)
         activeEventListenerOnEditText()
 
@@ -59,17 +60,5 @@ class ChangePasswordActivity : AppCompatActivity() {
         binding.etRepeatNewPassword.editText?.doOnTextChanged { text, _, _, _ ->
             areCorrectFieldsList[2] = fieldNotEmpty(editsInputsList[2], text.toString())
         }
-    }
-
-    private fun fieldNotEmpty(field: TextInputLayout, text: String, min: Int = 6): Boolean {
-        val isCorrectField = text.isNotEmpty() && text.length >= min
-        if (isCorrectField) {
-            field.error = null
-            field.helperText = "* Requerido"
-        } else {
-            field.helperText = null
-            field.error = "Debe contener al menos $min caracteres"
-        }
-        return isCorrectField
     }
 }

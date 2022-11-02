@@ -3,6 +3,7 @@ package com.pandadevs.heyfix_worker.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.pandadevs.heyfix_worker.databinding.ActivityChatBinding
+import com.pandadevs.heyfix_worker.utils.SnackbarShow
 
 class ChatActivity : AppCompatActivity() {
     lateinit var binding: ActivityChatBinding
