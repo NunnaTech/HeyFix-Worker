@@ -27,7 +27,6 @@ class SharedPreferenceManager(val context: Context) {
     }
 
     fun cleanShared(){
-        sharedPref.edit().clear()
-        sharedPref.edit().apply()
+        sharedPref.edit().clear().apply()
     }
 }
