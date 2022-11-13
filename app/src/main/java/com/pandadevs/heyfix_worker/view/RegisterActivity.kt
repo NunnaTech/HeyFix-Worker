@@ -43,7 +43,10 @@ class RegisterActivity : AppCompatActivity() {
             .build()
         google = GoogleSignIn.getClient(this,options)
         editsInputsList = listOf(
-            binding.etName, binding.etLastName, binding.etWork, binding.etTransport,
+            binding.etName,
+            binding.etFirstSurname,
+            binding.etSecondSurname,
+            binding.etWork, binding.etTransport,
             binding.etEmail, binding.etPhone, binding.etNewPassword, binding.etRepeatNewPassword
         )
         areCorrectFieldsList = mutableListOf(false, false, false, false, false, false, false, false)
@@ -107,16 +110,18 @@ class RegisterActivity : AppCompatActivity() {
     private fun checkFields() {
         if (areCorrectFieldsList.none { !it } && checkPasswordsFields()) {
             lifecycleScope.launch {
-                var names = binding.etLastName.editText?.text.toString().split(" ")
+                var name = binding.etName.editText?.text.toString()
+                var firstSurname = binding.etFirstSurname.editText?.text.toString()
+                var secondSurname = binding.etSecondSurname.editText?.text.toString()
                 var user = UserPost(
-                    binding.etName.editText?.text.toString(),
-                    names[0],
-                    second_surname = if (names.size > 1) names[1] else "" ,
+                    name,
+                    firstSurname,
+                    secondSurname,
                     true,
                     false,
                     binding.etEmail.editText?.text.toString(),
                     binding.etPhone.editText?.text.toString(),
-                    picture = "",
+                    picture = "https://ui-avatars.com/api/?name=$name+$firstSurname&background=2F53D0&color=fff&size=128",
                     ranked_avg = 0.0,
                     transport = binding.etTransport.editText?.text.toString(),
                     category_id = getIdCategory(binding.etWork.editText!!.text.toString())!!,
@@ -154,9 +159,17 @@ class RegisterActivity : AppCompatActivity() {
                 )
         }
 
-        binding.etLastName.editText?.doOnTextChanged { text, _, _, _ ->
+        binding.etFirstSurname.editText?.doOnTextChanged { text, _, _, _ ->
             areCorrectFieldsList[1] =
                 fieldNotEmpty(editsInputsList[1], text.toString(), 2) && fieldRegexName(
+                    editsInputsList[1],
+                    text.toString()
+                )
+        }
+
+        binding.etSecondSurname.editText?.doOnTextChanged { text, _, _, _ ->
+            areCorrectFieldsList[1] =
+                fieldRegexName(
                     editsInputsList[1],
                     text.toString()
                 )

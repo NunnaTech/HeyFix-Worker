@@ -29,9 +29,9 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
+                    app:layout_constraintTop_toTopOf="parent"/>
                 <Button
+                    android:id="@+id/btnProfilePicture"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:icon="@drawable/ic_add_image"
@@ -39,6 +39,15 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/circleImageView" />
+                <Button
+                    android:id="@+id/btnLogout"
+                    android:layout_width="60dp"
+                    android:layout_height="0dp"
+                    android:backgroundTint="@color/md_theme_light_tertiary"
+                    app:icon="@drawable/ic_baseline_logout"
+                    app:iconGravity="textStart"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/circleImageView" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
@@ -47,7 +56,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="10dp"
-                android:text="Annete Torres"
                 android:textAlignment="center"
                 android:textColor="@color/SoftlyBlack"
                 android:textSize="30sp"
@@ -80,6 +88,43 @@
                         android:layout_height="wrap_content"
                         android:text="@string/strEditProfile"
                         android:textSize="@dimen/dimenText" />
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/etWork"
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:hint="@string/strWork"
+                        app:errorEnabled="true"
+                        app:helperText="* Requerido"
+                        app:startIconDrawable="@drawable/ic_services">
+
+                        <AutoCompleteTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textFilter"
+                            app:simpleItems="@array/strArrayExample" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/etEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:enabled="false"
+                        android:hint="@string/strEmail"
+                        app:counterEnabled="true"
+                        app:counterMaxLength="50"
+                        app:endIconMode="clear_text"
+                        app:errorEnabled="true"
+                        app:startIconDrawable="@drawable/ic_email">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textEmailAddress"
+                            android:maxLength="50" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/etName"
@@ -103,11 +148,11 @@
 
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/etLastName"
+                        android:id="@+id/etFirstSurname"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
-                        android:hint="@string/strLastname"
+                        android:hint="@string/strFistSurname"
                         app:counterEnabled="true"
                         app:counterMaxLength="50"
                         app:endIconMode="clear_text"
@@ -123,23 +168,24 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/etWork"
-                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:id="@+id/etSecondSurname"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
-                        android:hint="@string/strWork"
+                        android:hint="@string/strSecondSurname"
+                        app:counterEnabled="true"
+                        app:counterMaxLength="50"
+                        app:endIconMode="clear_text"
                         app:errorEnabled="true"
-                        app:helperText="* Requerido"
-                        app:startIconDrawable="@drawable/ic_services">
+                        app:startIconDrawable="@drawable/ic_person">
 
-                        <AutoCompleteTextView
+                        <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="textFilter"
-                            app:simpleItems="@array/strArrayExample" />
-
+                            android:inputType="text"
+                            android:maxLength="50" />
                     </com.google.android.material.textfield.TextInputLayout>
+
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/etTransport"
@@ -161,25 +207,6 @@
                             android:maxLength="80" />
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/etEmail"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:enabled="false"
-                        android:hint="@string/strEmail"
-                        app:counterEnabled="true"
-                        app:counterMaxLength="50"
-                        app:endIconMode="clear_text"
-                        app:errorEnabled="true"
-                        app:startIconDrawable="@drawable/ic_email">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="textEmailAddress"
-                            android:maxLength="50" />
-                    </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/etPhone"
@@ -206,18 +233,20 @@
             </com.google.android.material.card.MaterialCardView>
 
             <Button
-                android:id="@+id/btnChangePass"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:backgroundTint="@color/md_theme_light_secondary"
-                android:text="@string/strGoToChangePass" />
-
-            <Button
                 android:id="@+id/btnSave"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
                 android:text="@string/strSaveChanges" />
+
+            <Button
+                android:id="@+id/btnChangePass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:backgroundTint="@color/md_theme_light_secondary"
+                android:text="@string/strGoToChangePass" />
+
 
             <Button
                 android:id="@+id/btnAbout"
