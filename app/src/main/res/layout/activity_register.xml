@@ -155,8 +155,7 @@
                 <AutoCompleteTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textFilter"
-                    app:simpleItems="@array/strArrayExample" />
+                    android:inputType="textFilter" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
