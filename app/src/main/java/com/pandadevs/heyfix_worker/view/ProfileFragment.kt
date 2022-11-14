@@ -19,6 +19,7 @@ import com.bumptech.glide.Glide
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.firestore.FirebaseFirestore
+import com.pandadevs.heyfix_worker.data.model.CategoryModel
 import com.pandadevs.heyfix_worker.data.model.UserGet
 import com.pandadevs.heyfix_worker.databinding.FragmentProfileBinding
 import com.pandadevs.heyfix_worker.utils.SharedPreferenceManager
@@ -40,7 +41,7 @@ class ProfileFragment : Fragment() {
     private var isNotEmpty = false
     private lateinit var user: UserGet
     lateinit var viewModel: ProfileViewModel
-
+    lateinit var categories:MutableList<CategoryModel>
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
 
@@ -52,7 +53,6 @@ class ProfileFragment : Fragment() {
             binding.etTransport,
             binding.etPhone
         )
-        System.out.println("Loyal: " + editsInputsList.size)
         areCorrectFieldsList = mutableListOf(false, false, false, false, false,false)
 
         binding.btnChangePass.setOnClickListener { goToActivity(ChangePasswordActivity::class.java) }
@@ -93,16 +93,23 @@ class ProfileFragment : Fragment() {
         user.first_surname = binding.etFirstSurname.editText?.text.toString()
         user.second_surname = binding.etSecondSurname.editText?.text.toString()
         user.phone_number = binding.etPhone.editText?.text.toString()
-        user.category_id = binding.etWork.editText?.text.toString()
         user.transport = binding.etTransport.editText?.text.toString()
         // update work
-        binding.etWork.editText?.setText(user.category_id)
-        binding.etWork.editText?.isEnabled = false
-
+        user.category_id = filterCategory(binding.etWork.editText?.text.toString())
         if (isNotEmpty) {
             viewModel.updatePhotoUser(imageUrl, user)
         }
         viewModel.updateUserData(user)
+    }
+    private fun filterCategory(query: String): String {
+        for (category in categories) {
+            if (category.name.toLowerCase().contains(query.toLowerCase())) {
+                binding.etWork.editText?.setText(category.name)
+                binding.etWork.editText?.isEnabled = false
+                return category.id
+            }
+        }
+        return ""
     }
     private fun loadUserData() {
         // Set data
@@ -113,10 +120,10 @@ class ProfileFragment : Fragment() {
         binding.etFirstSurname.editText?.setText(user.first_surname)
         binding.etSecondSurname.editText?.setText(user.second_surname)
         binding.etPhone.editText?.setText(user.phone_number)
-        binding.etWork.editText?.setText(user.category_id)
         binding.etTransport.editText?.setText(user.transport)
         // check if has work
         if (user.category_id != "") {
+            getWork(user.category_id)
             binding.etWork.editText?.isEnabled = false
         }else{
             // fill category
@@ -124,16 +131,31 @@ class ProfileFragment : Fragment() {
         }
 
     }
-
+    private fun getWork(id:String){
+        val db = FirebaseFirestore.getInstance()
+        db.collection("categories").document(id).get().addOnSuccessListener {
+            binding.etWork.editText?.setText(it.get("name").toString())
+        }
+    }
     fun setListWorks(){
+        categories = mutableListOf()
         FirebaseFirestore
             .getInstance()
             .collection("categories")
             .get()
             .addOnSuccessListener {documents ->
                 var items = mutableListOf<String>()
+
                 documents.forEach{ doc ->
                     items.add(doc.data["name"].toString())
+                    var ca = CategoryModel(
+                        doc.id.toString(),
+                        doc.data["name"].toString(),
+                        doc.data["icon"].toString(),
+                        doc.data["description"].toString())
+                    categories.add(ca
+                    )
+                    System.out.println("Loya => " + ca.id)
                 }
                 (binding.etWork.editText as? MaterialAutoCompleteTextView)?.setSimpleItems(items.toTypedArray())
             }
@@ -148,7 +170,6 @@ class ProfileFragment : Fragment() {
             }
             viewModel.result.observe(this) {
                 SharedPreferenceManager(requireContext()).saveUser(user)!!
-                SnackbarShow.showSnackbar(binding.root, "Guardado exitoso")
             }
         }
     }
@@ -158,7 +179,6 @@ class ProfileFragment : Fragment() {
                 ContextCompat.checkSelfPermission(
                     requireContext(),
                     Manifest.permission.READ_EXTERNAL_STORAGE
-
                 ) == PackageManager.PERMISSION_GRANTED -> {
                     pickUpFromGallery()
                 }
@@ -172,12 +192,10 @@ class ProfileFragment : Fragment() {
     private val requestPermissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestPermission()
     ) { isGranted ->
-
         if (isGranted) {
             pickUpFromGallery()
         } else {
             SnackbarShow.showSnackbar(binding.root, "Permisos denegados")
-
         }
     }
     private fun pickUpFromGallery() {

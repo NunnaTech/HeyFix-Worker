@@ -22,6 +22,7 @@ class ProfileViewModel : ViewModel() {
             error.postValue(response.data!!)
         }
     }
+
     fun updatePhotoUser(uri: Uri,user: UserGet) {
         isDataProgress.value = true
         viewModelScope.launch {
