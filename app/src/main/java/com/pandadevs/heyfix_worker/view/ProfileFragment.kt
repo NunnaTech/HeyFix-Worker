@@ -67,8 +67,7 @@ class ProfileFragment : Fragment() {
         // change profile picture
         binding.btnProfilePicture.setOnClickListener { requestPermission() }
 
-        // Get current data
-        user = SharedPreferenceManager(requireContext()).getUser()!!
+
 
         //  Load current data
         loadUserData()
@@ -100,6 +99,9 @@ class ProfileFragment : Fragment() {
             viewModel.updatePhotoUser(imageUrl, user)
         }
         viewModel.updateUserData(user)
+        // update shared preferences
+        SharedPreferenceManager(requireContext()).saveUser(user)!!
+        loadUserData()
     }
     private fun filterCategory(query: String): String {
         for (category in categories) {
@@ -112,6 +114,9 @@ class ProfileFragment : Fragment() {
         return ""
     }
     private fun loadUserData() {
+        // Get current data
+        user = SharedPreferenceManager(requireContext()).getUser()!!
+
         // Set data
         Glide.with(requireContext()).load(user.picture).into(binding.circleImageView)
         binding.txtUserName.text = user.name + " " + user.first_surname
@@ -220,12 +225,13 @@ class ProfileFragment : Fragment() {
     private fun checkFields() {
         if (areCorrectFieldsList.none { !it }) {
             SnackbarShow.showSnackbar(binding.root, "Guardado exitoso")
+            updateData()
         } else {
             editsInputsList.forEachIndexed { index, it ->
                 if (!areCorrectFieldsList[index]) it.error = "* Requerido"
             }
         }
-        updateData()
+
     }
 
     private fun activeEventListenerOnEditText() {
