@@ -56,7 +56,8 @@
     <string name="strDescription">Por favor, llena los siguientes campos:</string>
     <string name="strRegisterWithGoogle">Registrate con Google</string>
     <string name="strName">Nombre</string>
-    <string name="strLastname">Apellidos</string>
+    <string name="strFistSurname">Primer Apellido</string>
+    <string name="strSecondSurname">Segundo Apellido</string>
     <string name="strWork">Tipo de trabajo</string>
     <string name="strCar">Transporte que usas</string>
     <string name="strNameNotValid">El campo tiene caracteres no válidos</string>

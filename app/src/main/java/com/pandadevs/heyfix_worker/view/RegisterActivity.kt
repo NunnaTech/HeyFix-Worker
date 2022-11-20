@@ -43,10 +43,16 @@ class RegisterActivity : AppCompatActivity() {
             .build()
         google = GoogleSignIn.getClient(this,options)
         editsInputsList = listOf(
-            binding.etName, binding.etLastName, binding.etWork, binding.etTransport,
-            binding.etEmail, binding.etPhone, binding.etNewPassword, binding.etRepeatNewPassword
+            binding.etName,
+            binding.etFirstSurname,
+            binding.etSecondSurname,
+            binding.etWork, binding.etTransport,
+            binding.etEmail,
+            binding.etPhone,
+            binding.etNewPassword,
+            binding.etRepeatNewPassword
         )
-        areCorrectFieldsList = mutableListOf(false, false, false, false, false, false, false, false)
+        areCorrectFieldsList = mutableListOf(false, false, true, false, false, false, false, false,false)
         setListWorks()
 
         binding.tbApp.setNavigationOnClickListener { finish() }
@@ -107,16 +113,18 @@ class RegisterActivity : AppCompatActivity() {
     private fun checkFields() {
         if (areCorrectFieldsList.none { !it } && checkPasswordsFields()) {
             lifecycleScope.launch {
-                var names = binding.etLastName.editText?.text.toString().split(" ")
+                var name = binding.etName.editText?.text.toString()
+                var firstSurname = binding.etFirstSurname.editText?.text.toString()
+                var secondSurname = binding.etSecondSurname.editText?.text.toString()
                 var user = UserPost(
-                    binding.etName.editText?.text.toString(),
-                    names[0],
-                    second_surname = if (names.size > 1) names[1] else "" ,
+                    name,
+                    firstSurname,
+                    secondSurname,
                     true,
                     false,
                     binding.etEmail.editText?.text.toString(),
                     binding.etPhone.editText?.text.toString(),
-                    picture = "",
+                    picture = "https://ui-avatars.com/api/?name=$name+$firstSurname&background=003543&color=fff&size=200",
                     ranked_avg = 0.0,
                     transport = binding.etTransport.editText?.text.toString(),
                     category_id = getIdCategory(binding.etWork.editText!!.text.toString())!!,
@@ -136,10 +144,10 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun checkPasswordsFields(): Boolean {
         val areCorrectPasswords =
-            editsInputsList[6].editText?.text.toString() == editsInputsList[7].editText?.text.toString()
+            editsInputsList[7].editText?.text.toString() == editsInputsList[8].editText?.text.toString()
         if (!areCorrectPasswords) {
-            editsInputsList[6].error = "* Requerido"
             editsInputsList[7].error = "* Requerido"
+            editsInputsList[8].error = "* Requerido"
             SnackbarShow.showSnackbar(binding.root, "Las contraseñas no coinciden")
         }
         return areCorrectPasswords
@@ -154,7 +162,7 @@ class RegisterActivity : AppCompatActivity() {
                 )
         }
 
-        binding.etLastName.editText?.doOnTextChanged { text, _, _, _ ->
+        binding.etFirstSurname.editText?.doOnTextChanged { text, _, _, _ ->
             areCorrectFieldsList[1] =
                 fieldNotEmpty(editsInputsList[1], text.toString(), 2) && fieldRegexName(
                     editsInputsList[1],
@@ -162,32 +170,40 @@ class RegisterActivity : AppCompatActivity() {
                 )
         }
 
-        binding.etWork.editText?.doOnTextChanged { text, _, _, _ ->
-            areCorrectFieldsList[2] = fieldNotEmpty(editsInputsList[2], text.toString(), 4)
+        binding.etSecondSurname.editText?.doOnTextChanged { text, _, _, _ ->
+            areCorrectFieldsList[2] =
+                fieldRegexName(
+                    editsInputsList[2],
+                    text.toString()
+                )
         }
 
-        binding.etTransport.editText?.doOnTextChanged { text, _, _, _ ->
+        binding.etWork.editText?.doOnTextChanged { text, _, _, _ ->
             areCorrectFieldsList[3] = fieldNotEmpty(editsInputsList[3], text.toString(), 4)
         }
 
+        binding.etTransport.editText?.doOnTextChanged { text, _, _, _ ->
+            areCorrectFieldsList[4] = fieldNotEmpty(editsInputsList[4], text.toString(), 4)
+        }
+
         binding.etEmail.editText?.doOnTextChanged { text, _, _, _ ->
-            areCorrectFieldsList[4] =
-                fieldNotEmpty(editsInputsList[4], text.toString()) && fieldRegexEmail(
-                    editsInputsList[4],
+            areCorrectFieldsList[5] =
+                fieldNotEmpty(editsInputsList[5], text.toString()) && fieldRegexEmail(
+                    editsInputsList[5],
                     text.toString()
                 )
         }
 
         binding.etPhone.editText?.doOnTextChanged { text, _, _, _ ->
-            areCorrectFieldsList[5] = fieldNotEmpty(editsInputsList[5], text.toString(), 10)
+            areCorrectFieldsList[6] = fieldNotEmpty(editsInputsList[6], text.toString(), 10)
         }
 
         binding.etNewPassword.editText?.doOnTextChanged { text, _, _, _ ->
-            areCorrectFieldsList[6] = fieldNotEmpty(editsInputsList[6], text.toString())
+            areCorrectFieldsList[7] = fieldNotEmpty(editsInputsList[7], text.toString())
         }
 
         binding.etRepeatNewPassword.editText?.doOnTextChanged { text, _, _, _ ->
-            areCorrectFieldsList[7] = fieldNotEmpty(editsInputsList[6], text.toString())
+            areCorrectFieldsList[8] = fieldNotEmpty(editsInputsList[8], text.toString())
         }
     }
 
