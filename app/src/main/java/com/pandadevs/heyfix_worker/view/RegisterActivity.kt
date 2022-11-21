@@ -19,6 +19,9 @@ import com.pandadevs.heyfix_worker.R
 import com.pandadevs.heyfix_worker.data.model.UserPost
 import com.pandadevs.heyfix_worker.databinding.ActivityRegisterBinding
 import com.pandadevs.heyfix_worker.utils.SnackbarShow
+import com.pandadevs.heyfix_worker.utils.Validations.fieldNotEmpty
+import com.pandadevs.heyfix_worker.utils.Validations.fieldRegexEmail
+import com.pandadevs.heyfix_worker.utils.Validations.fieldRegexName
 import com.pandadevs.heyfix_worker.viewmodel.RegisterViewModel
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.launch
@@ -41,7 +44,7 @@ class RegisterActivity : AppCompatActivity() {
         ).requestIdToken("61020705136-mufc3648s89a2ajcip1sd45e4r85p2of.apps.googleusercontent.com")
             .requestEmail()
             .build()
-        google = GoogleSignIn.getClient(this,options)
+        google = GoogleSignIn.getClient(this, options)
         editsInputsList = listOf(
             binding.etName,
             binding.etFirstSurname,
@@ -52,12 +55,12 @@ class RegisterActivity : AppCompatActivity() {
             binding.etNewPassword,
             binding.etRepeatNewPassword
         )
-        areCorrectFieldsList = mutableListOf(false, false, true, false, false, false, false, false,false)
+        areCorrectFieldsList =
+            mutableListOf(false, false, true, false, false, false, false, false, false)
         setListWorks()
-
         binding.tbApp.setNavigationOnClickListener { finish() }
         binding.btnRegister.setOnClickListener { checkFields() }
-        binding.btnGoogle.setOnClickListener{
+        binding.btnGoogle.setOnClickListener {
             google.signOut()
             google.silentSignIn()
             val intent = google.signInIntent
@@ -67,42 +70,40 @@ class RegisterActivity : AppCompatActivity() {
         initObservers()
     }
 
-    // Add names of categories
-    fun setListWorks(){
+    fun setListWorks() {
         FirebaseFirestore
             .getInstance()
             .collection("categories")
             .get()
-            .addOnSuccessListener {documents ->
-                var items = mutableListOf<String>()
-                documents.forEach{ doc ->
+            .addOnSuccessListener { documents ->
+                val items = mutableListOf<String>()
+                documents.forEach { doc ->
                     items.add(doc.data["name"].toString())
                 }
                 (binding.etWork.editText as? MaterialAutoCompleteTextView)?.setSimpleItems(items.toTypedArray())
             }
     }
 
-    fun initObservers(){
-        viewModel.result.observe(this){
-            SnackbarShow.showSnackbar(binding.root,it)
+    fun initObservers() {
+        viewModel.result.observe(this) {
+            SnackbarShow.showSnackbar(binding.root, it)
         }
 
-        viewModel.error.observe(this){
-            SnackbarShow.showSnackbar(binding.root,it)
+        viewModel.error.observe(this) {
+            SnackbarShow.showSnackbar(binding.root, it)
         }
     }
 
-    // Get id of category
-    suspend fun getIdCategory(name:String):String?{
+    suspend fun getIdCategory(name: String): String? {
         val response = CompletableDeferred<String?>()
         FirebaseFirestore.getInstance()
             .collection("categories")
-            .whereEqualTo("name",name)
+            .whereEqualTo("name", name)
             .get()
             .addOnSuccessListener {
-                if (it.documents.size > 0){
+                if (it.documents.size > 0) {
                     response.complete(it.documents[0].id)
-                }else{
+                } else {
                     response.complete("nothing")
                 }
             }
@@ -113,10 +114,10 @@ class RegisterActivity : AppCompatActivity() {
     private fun checkFields() {
         if (areCorrectFieldsList.none { !it } && checkPasswordsFields()) {
             lifecycleScope.launch {
-                var name = binding.etName.editText?.text.toString()
-                var firstSurname = binding.etFirstSurname.editText?.text.toString()
-                var secondSurname = binding.etSecondSurname.editText?.text.toString()
-                var user = UserPost(
+                val name = binding.etName.editText?.text.toString()
+                val firstSurname = binding.etFirstSurname.editText?.text.toString()
+                val secondSurname = binding.etSecondSurname.editText?.text.toString()
+                val user = UserPost(
                     name,
                     firstSurname,
                     secondSurname,
@@ -130,7 +131,7 @@ class RegisterActivity : AppCompatActivity() {
                     category_id = getIdCategory(binding.etWork.editText!!.text.toString())!!,
                     current_position = "",
                 )
-                viewModel.registerData(user,binding.etNewPassword.editText?.text.toString())
+                viewModel.registerData(user, binding.etNewPassword.editText?.text.toString())
             }
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
@@ -207,55 +208,20 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-    private fun fieldRegexName(field: TextInputLayout, text: String): Boolean {
-        val isCorrectField = Regex("^[A-Za-zÁÉÍÓÚÑáéíóúñ. ]*$").matches(text)
-        if (isCorrectField) {
-            field.error = null
-            field.helperText = "* Requerido"
-        } else {
-            field.helperText = null
-            field.error = "Debe de contener caracteres válidos"
-        }
-        return isCorrectField
-    }
 
-    private fun fieldRegexEmail(field: TextInputLayout, text: String): Boolean {
-        val isCorrectField = Regex("[a-z0-9]+@[a-z]+\\.[a-z]{2,3}").matches(text)
-        if (isCorrectField) {
-            field.error = null
-            field.helperText = "* Requerido"
-        } else {
-            field.helperText = null
-            field.error = "Debe ser un correo válido"
-        }
-        return isCorrectField
-    }
-
-    private fun fieldNotEmpty(field: TextInputLayout, text: String, min: Int = 6): Boolean {
-        val isCorrectField = text.isNotEmpty() && text.length >= min
-        if (isCorrectField) {
-            field.error = null
-            field.helperText = "* Requerido"
-        } else {
-            field.helperText = null
-            field.error = "Debe contener al menos $min caracteres"
-        }
-        return isCorrectField
-    }
-
-    fun registerWithGoogle(user:UserPost){
+    fun registerWithGoogle(user: UserPost) {
         FirebaseFirestore
             .getInstance()
             .collection("users")
             .document()
             .set(user)
             .addOnSuccessListener {
-                SnackbarShow.showSnackbar(binding.root,"Registro Exitoso")
+                SnackbarShow.showSnackbar(binding.root, "Registro Exitoso")
                 startActivity(Intent(this, LoginActivity::class.java))
                 finish()
             }
             .addOnFailureListener {
-                SnackbarShow.showSnackbar(binding.root,"El Registro de Datos fue Invalido")
+                SnackbarShow.showSnackbar(binding.root, "El Registro de Datos fue Invalido")
             }
     }
 
@@ -269,7 +235,7 @@ class RegisterActivity : AppCompatActivity() {
             var data = UserPost(
                 account.givenName.toString(),
                 names[0],
-                second_surname = if (names.size > 1) names[1] else "" ,
+                second_surname = if (names.size > 1) names[1] else "",
                 true,
                 true,
                 account.email.toString(),

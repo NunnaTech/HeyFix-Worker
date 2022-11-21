@@ -1,10 +1,12 @@
 package com.pandadevs.heyfix_worker.view
 
+import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.app.ActivityCompat
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -43,13 +45,13 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
         viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
         editsInputsList = listOf(binding.etEmail, binding.etPassword)
-        // Variables for Google Sign-in
+        requestLocationPermission()
         val options = GoogleSignInOptions.Builder(
             GoogleSignInOptions.DEFAULT_SIGN_IN
         ).requestIdToken("61020705136-mufc3648s89a2ajcip1sd45e4r85p2of.apps.googleusercontent.com")
             .requestEmail()
             .build()
-        google = GoogleSignIn.getClient(this,options)
+        google = GoogleSignIn.getClient(this, options)
         areCorrectFieldsList = mutableListOf(false, false)
         binding.btnRegister.setOnClickListener { goToActivity(RegisterActivity::class.java) }
         binding.btnLogin.setOnClickListener { checkFields() }
@@ -63,17 +65,16 @@ class LoginActivity : AppCompatActivity() {
         initObservers()
     }
 
-    // Check if an account exist
-    suspend fun existUser(email:String):Boolean?{
+    suspend fun existUser(email: String): Boolean? {
         val response = CompletableDeferred<Boolean?>()
         FirebaseFirestore.getInstance()
             .collection("users")
-            .whereEqualTo("email",email)
+            .whereEqualTo("email", email)
             .get()
             .addOnSuccessListener {
-                if (it.documents.size > 0){
+                if (it.documents.size > 0) {
                     response.complete(true)
-                }else{
+                } else {
                     response.complete(false)
                 }
             }
@@ -84,7 +85,10 @@ class LoginActivity : AppCompatActivity() {
     private fun checkFields() {
         if (areCorrectFieldsList.none { !it }) {
             lifecycleScope.launch {
-                viewModel.loginEmail(binding.etEmail.editText?.text.toString(),binding.etPassword.editText?.text.toString())
+                viewModel.loginEmail(
+                    binding.etEmail.editText?.text.toString(),
+                    binding.etPassword.editText?.text.toString()
+                )
             }
         } else {
             editsInputsList.forEachIndexed { index, it ->
@@ -100,7 +104,11 @@ class LoginActivity : AppCompatActivity() {
 
     private fun activeEventListenerOnEditText() {
         binding.etEmail.editText?.doOnTextChanged { text, _, _, _ ->
-            areCorrectFieldsList[0] = fieldNotEmpty(editsInputsList[0], text.toString()) && fieldRegexEmail(editsInputsList[0], text.toString())
+            areCorrectFieldsList[0] =
+                fieldNotEmpty(editsInputsList[0], text.toString()) && fieldRegexEmail(
+                    editsInputsList[0],
+                    text.toString()
+                )
         }
 
         binding.etPassword.editText?.doOnTextChanged { text, _, _, _ ->
@@ -108,24 +116,28 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    fun initObservers(){
-        viewModel.result.observe(this){
-            getDataToPreferences("email",null)
+    fun initObservers() {
+        viewModel.result.observe(this) {
+            getDataToPreferences("email", null)
         }
 
-        viewModel.error.observe(this){
-            SnackbarShow.showSnackbar(binding.root,"Error al iniciar sesión, los datos son incorrectos")
+        viewModel.error.observe(this) {
+            SnackbarShow.showSnackbar(
+                binding.root,
+                "Error al iniciar sesión, los datos son incorrectos"
+            )
         }
     }
 
-    fun getDataToPreferences(method:String,userEmailGoogle:String?){
-        var email = if (method=="email") binding.etEmail.editText?.text.toString() else userEmailGoogle
+    fun getDataToPreferences(method: String, userEmailGoogle: String?) {
+        val email =
+            if (method == "email") binding.etEmail.editText?.text.toString() else userEmailGoogle
         FirebaseFirestore.getInstance()
             .collection("users")
-            .whereEqualTo("email",email)
+            .whereEqualTo("email", email)
             .get()
             .addOnSuccessListener { documents ->
-                var user = UserGet(
+                val user = UserGet(
                     documents.documents[0].id,
                     documents.documents[0].data!!["name"].toString(),
                     documents.documents[0].data!!["first_surname"].toString(),
@@ -142,38 +154,57 @@ class LoginActivity : AppCompatActivity() {
                 )
                 SharedPreferenceManager(this).saveUser(user)
                 SharedPreferenceManager(this).saveSession()
-                startActivity(Intent(this,MainActivity::class.java))
+                startActivity(Intent(this, MainActivity::class.java))
             }
     }
 
     val getResult = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
-    ){
-        if (it.resultCode== Activity.RESULT_OK){
-
-            val task = GoogleSignIn
-                .getSignedInAccountFromIntent(it.data)
-
-            var account = task.getResult(ApiException::class.java)
-            var credenciales = GoogleAuthProvider
-                .getCredential(account.idToken,null)
+    ) {
+        if (it.resultCode == Activity.RESULT_OK) {
+            val task = GoogleSignIn.getSignedInAccountFromIntent(it.data)
+            val account = task.getResult(ApiException::class.java)
+            val credenciales = GoogleAuthProvider
+                .getCredential(account.idToken, null)
             lifecycleScope.launch {
-                if (existUser(account.email!!)==true){
+                if (existUser(account.email!!) == true) {
                     FirebaseAuth.getInstance()
                         .signInWithCredential(credenciales)
                         .addOnCompleteListener {
-                            if (it.isSuccessful){
-                                getDataToPreferences("google",account.email)
-                            }else{
-                                Snackbar.make(binding.root,"No existe una cuenta vinculada", Snackbar.LENGTH_SHORT).show()
+                            if (it.isSuccessful) {
+                                getDataToPreferences("google", account.email)
+                            } else {
+                                Snackbar.make(
+                                    binding.root,
+                                    "No existe una cuenta vinculada",
+                                    Snackbar.LENGTH_SHORT
+                                ).show()
                             }
                         }
-                }else{
-                    Snackbar.make(binding.root,"No existe una cuenta vinculada", Snackbar.LENGTH_SHORT).show()
+                } else {
+                    Snackbar.make(
+                        binding.root,
+                        "No existe una cuenta vinculada",
+                        Snackbar.LENGTH_SHORT
+                    ).show()
                 }
             }
         }
     }
 
-
+    private fun requestLocationPermission() {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            )
+        ) {
+            SnackbarShow.showSnackbar(binding.root, "Ve ajustes a dar permisos de localización")
+        } else {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                0
+            )
+        }
+    }
 }

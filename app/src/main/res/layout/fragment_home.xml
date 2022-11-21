@@ -39,7 +39,6 @@
             android:focusable="false">
 
             <LinearLayout
-
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
@@ -74,7 +73,7 @@
                         android:id="@+id/tvRate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="9.9"
+                        tools:text=""
                         android:textSize="40sp" />
                 </LinearLayout>
             </LinearLayout>

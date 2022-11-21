@@ -11,12 +11,12 @@
         android:indeterminateTint="@color/SoftlyWhite"
         />
     <TextView
-        android:id="@+id/label"
+        android:id="@+id/tvLabel"
         android:textSize="10sp"
         android:textStyle="bold"
         android:textColor="@color/SoftlyWhite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Espere..."/>
+        android:text="Espere"/>
 </LinearLayout>

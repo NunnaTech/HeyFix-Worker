@@ -16,6 +16,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.firestore.FirebaseFirestore
@@ -33,16 +34,19 @@ class ProfileFragment : Fragment() {
 
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
-
     private var editsInputsList: List<TextInputLayout> = listOf()
     private var areCorrectFieldsList: MutableList<Boolean> = mutableListOf()
-
     private lateinit var imageUrl: Uri
     private var isNotEmpty = false
     private lateinit var user: UserGet
     lateinit var viewModel: ProfileViewModel
-    lateinit var categories:MutableList<CategoryModel>
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    lateinit var categories: MutableList<CategoryModel>
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
 
         editsInputsList = listOf(
@@ -53,33 +57,27 @@ class ProfileFragment : Fragment() {
             binding.etTransport,
             binding.etPhone
         )
-        areCorrectFieldsList = mutableListOf(false, false, false, false, false,false)
+        areCorrectFieldsList = mutableListOf(false, false, false, false, false, false)
 
         binding.btnChangePass.setOnClickListener { goToActivity(ChangePasswordActivity::class.java) }
         binding.btnAbout.setOnClickListener { goToActivity(AboutActivity::class.java) }
         binding.btnSave.setOnClickListener { checkFields() }
-
         activeEventListenerOnEditText()
-
-        // viewModel
         viewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
-
-        // change profile picture
         binding.btnProfilePicture.setOnClickListener { requestPermission() }
-
-
-
-        //  Load current data
         loadUserData()
-
-        // Inflate the layout for this fragment
         initObservers()
-
-
-        // logout
-        binding.btnLogout.setOnClickListener { logout() }
-
+        binding.btnLogout.setOnClickListener { confirmCancelService() }
         return binding.root
+    }
+
+    private fun confirmCancelService() {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle("¿Cerrar sesión?")
+            .setMessage("Se te mandará a la pantalla de iniciar sesión")
+            .setNegativeButton("No") { dialog, _ -> dialog.dismiss() }
+            .setPositiveButton("Sí, cerrar sesión") { _, _ -> logout() }
+            .show()
     }
 
     private fun logout() {
@@ -87,6 +85,7 @@ class ProfileFragment : Fragment() {
         startActivity(Intent(requireContext(), SplashActivity::class.java))
         activity?.finish()
     }
+
     private fun updateData() {
         user.name = binding.etName.editText?.text.toString()
         user.first_surname = binding.etFirstSurname.editText?.text.toString()
@@ -103,6 +102,7 @@ class ProfileFragment : Fragment() {
         SharedPreferenceManager(requireContext()).saveUser(user)!!
         loadUserData()
     }
+
     private fun filterCategory(query: String): String {
         for (category in categories) {
             if (category.name.toLowerCase().contains(query.toLowerCase())) {
@@ -113,6 +113,7 @@ class ProfileFragment : Fragment() {
         }
         return ""
     }
+
     private fun loadUserData() {
         // Get current data
         user = SharedPreferenceManager(requireContext()).getUser()!!
@@ -130,46 +131,51 @@ class ProfileFragment : Fragment() {
         if (user.category_id != "") {
             getWork(user.category_id)
             binding.etWork.editText?.isEnabled = false
-        }else{
+        } else {
             // fill category
             setListWorks()
         }
 
     }
-    private fun getWork(id:String){
+
+    private fun getWork(id: String) {
         val db = FirebaseFirestore.getInstance()
         db.collection("categories").document(id).get().addOnSuccessListener {
             binding.etWork.editText?.setText(it.get("name").toString())
         }
     }
-    fun setListWorks(){
+
+    fun setListWorks() {
         categories = mutableListOf()
         FirebaseFirestore
             .getInstance()
             .collection("categories")
             .get()
-            .addOnSuccessListener {documents ->
+            .addOnSuccessListener { documents ->
                 var items = mutableListOf<String>()
 
-                documents.forEach{ doc ->
+                documents.forEach { doc ->
                     items.add(doc.data["name"].toString())
                     var ca = CategoryModel(
                         doc.id.toString(),
                         doc.data["name"].toString(),
                         doc.data["icon"].toString(),
-                        doc.data["description"].toString())
-                    categories.add(ca
+                        doc.data["description"].toString()
+                    )
+                    categories.add(
+                        ca
                     )
                     System.out.println("Loya => " + ca.id)
                 }
                 (binding.etWork.editText as? MaterialAutoCompleteTextView)?.setSimpleItems(items.toTypedArray())
             }
     }
+
     private fun initObservers() {
         viewModel.isDataProgress.observe(this) {
-            if(it){
-                LoadingScreen.show(requireContext(),"Cargando",false)
-            }else{
+            if (it) {
+                LoadingScreen.show(requireContext(), "Cargando", false)
+            } else {
                 LoadingScreen.hide()
 
             }
@@ -178,6 +184,7 @@ class ProfileFragment : Fragment() {
             }
         }
     }
+
     private fun requestPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             when {
@@ -203,11 +210,13 @@ class ProfileFragment : Fragment() {
             SnackbarShow.showSnackbar(binding.root, "Permisos denegados")
         }
     }
+
     private fun pickUpFromGallery() {
         val intent = Intent(Intent.ACTION_GET_CONTENT)
         intent.type = "image/*"
         startForActivityResult.launch(intent)
     }
+
     private val startForActivityResult = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
@@ -218,6 +227,7 @@ class ProfileFragment : Fragment() {
             binding.circleImageView.setImageURI(data)
         }
     }
+
     private fun goToActivity(cls: Class<*>) {
         activity?.startActivity(Intent(context, cls))
     }
