@@ -19,8 +19,8 @@ object LoadingScreen {
             .window!!
             .setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog!!.setCancelable(cancelable)
-        var label = dialog!!.findViewById<TextView>(R.id.label)
-        label.setText(message)
+        val label = dialog!!.findViewById<TextView>(R.id.tvLabel)
+        label.text = message
         dialog!!.show()
     }
 
