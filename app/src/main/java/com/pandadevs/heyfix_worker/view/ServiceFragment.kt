@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.pandadevs.heyfix_worker.databinding.FragmentServiceBinding
 
 class ServiceFragment : Fragment() {
@@ -16,15 +17,33 @@ class ServiceFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentServiceBinding.inflate(inflater, container, false)
 
 
         binding.btnResolve.setOnClickListener {
             activity?.startActivity(Intent(context, RequestServiceActivity::class.java))
         }
+
+        binding.btnGoOnService.setOnClickListener {
+            activity?.startActivity(Intent(context, RequestServiceActivity::class.java))
+        }
+
+        binding.btnReject.setOnClickListener { confirmCancelService() }
+
+        binding.plPulse.start()
         return binding.root
     }
 
+
+
+    private fun confirmCancelService() {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle("¿Cancelar solicitud?")
+            .setMessage("Perderás esta oportunidad de trabajo")
+            .setNegativeButton("No") { dialog, _ -> dialog.dismiss() }
+            .setPositiveButton("Sí, cancelar") { _, _ ->  }
+            .show()
+    }
 
 }

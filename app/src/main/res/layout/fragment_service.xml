@@ -7,87 +7,182 @@
     tools:context=".view.ServiceFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clNoWork"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:padding="@dimen/dimenScreenPadding"
-        tools:context=".ServiceActivity">
-
-        <TextView
-            android:id="@+id/tvUsuario"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="¡Hola, Jorge!"
-            android:textColor="@color/md_theme_light_primary"
-            android:textSize="35sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tvDetail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/strServiceDetails"
-            android:textSize="@dimen/dimenNormalText"
-            app:layout_constraintTop_toBottomOf="@+id/tvUsuario"
-            tools:layout_editor_absoluteX="20dp" />
+        android:visibility="gone">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@+id/llMain"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvDetail">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="240dp"
-                android:layout_height="240dp"
-                android:layout_gravity="center"
-                android:layout_margin="20dp"
-                android:src="@color/Accent" />
-
-            <TextView
-                android:id="@+id/tvDirection"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Calle Las Lomas No.45 Col.Alta Palmira Temixco, Morelos"
-                android:textSize="@dimen/dimenNormalText" />
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:id="@+id/llMain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <Button
-                android:id="@+id/btnReject"
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/ilus_voice" />
+
+            <TextView
+                android:id="@+id/tvNoWork"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/md_theme_light_tertiary"
-                android:text="@string/strReject"
-                app:icon="@drawable/ic_close" />
-
-            <Button
-                android:id="@+id/btnResolve"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/Accent"
-                android:text="@string/strAccept"
-                app:icon="@drawable/ic_check" />
-
+                android:layout_marginTop="@dimen/dimenText"
+                android:gravity="center"
+                android:text="@string/strNoWork"
+                android:textSize="@dimen/dimenNormalText"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
         </LinearLayout>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clOnWork"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/dimenScreenPadding"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/ilus_wait" />
+
+            <TextView
+                android:id="@+id/tvOnWork"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimenText"
+                android:gravity="center"
+                android:text="@string/strOnWork"
+                android:textSize="@dimen/dimenNormalText"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/btnGoOnService"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimenText"
+                android:text="@string/strGoToWork" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <LinearLayout
+        android:id="@+id/llService"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/dimenScreenPadding"
+            tools:context=".ServiceActivity">
+
+            <TextView
+                android:id="@+id/tvUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="¡Jorge"
+                android:textColor="@color/md_theme_light_primary"
+                android:textSize="35sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/strServiceDetails"
+                android:textSize="@dimen/dimenNormalText"
+                app:layout_constraintTop_toBottomOf="@+id/tvUsuario"
+                tools:layout_editor_absoluteX="20dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toTopOf="@+id/llMain"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvDetail">
+
+                <pl.bclogic.pulsator4droid.library.PulsatorLayout
+                    android:id="@+id/plPulse"
+                    android:layout_width="match_parent"
+                    android:layout_height="350dp"
+                    app:pulse_color="@color/md_theme_light_secondary"
+                    app:pulse_count="8"
+                    app:pulse_duration="1500"
+                    app:pulse_interpolator="Decelerate"
+                    app:pulse_repeat="0"
+                    app:pulse_startFromScratch="false">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="250dp"
+                        android:layout_height="250dp"
+                        android:layout_centerInParent="true"
+                        android:src="@color/Accent" />
+                </pl.bclogic.pulsator4droid.library.PulsatorLayout>
+
+                <TextView
+                    android:id="@+id/tvDirection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Calle Las Lomas No.45 Col.Alta Palmira Temixco, Morelos"
+                    android:textSize="@dimen/dimenText" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llMain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <Button
+                    android:id="@+id/btnReject"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/md_theme_light_tertiary"
+                    android:text="@string/strReject"
+                    app:icon="@drawable/ic_close" />
+
+                <Button
+                    android:id="@+id/btnResolve"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/Accent"
+                    android:text="@string/strAccept"
+                    app:icon="@drawable/ic_check" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </FrameLayout>

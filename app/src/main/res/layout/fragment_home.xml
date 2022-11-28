@@ -73,7 +73,7 @@
                         android:id="@+id/tvRate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        tools:text=""
+                        tools:text="9.9"
                         android:textSize="40sp" />
                 </LinearLayout>
             </LinearLayout>
