@@ -14,13 +14,17 @@ import com.pandadevs.heyfix_worker.provider.UserLastProvider
 
 class MainActivity : AppCompatActivity() {
 
+    companion object {
+        const val NOTIFICATION_ID = "NOTIFICATION_ID"
+    }
+
     lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        Log.i("MAN", intent.getStringExtra(NOTIFICATION_ID).toString())
         val navigation: BottomNavigationView = binding.bnvNavigation
         val navController = findNavController(R.id.fragmentNavHost)
         navigation.setupWithNavController(navController)
@@ -32,14 +36,12 @@ class MainActivity : AppCompatActivity() {
             val currentPosition = GeoPoint(it.latitude, it.longitude)
             UserLastProvider.setLastCurrentPosition(this@MainActivity, currentPosition)
         }
-
+        UserLastProvider.getAndSetToken(this)
     }
 
     override fun onResume() {
         super.onResume()
         UserLastProvider.setLastOnline(this)
-        UserLastProvider.getAndSetToken(this)
+
     }
-
-
 }

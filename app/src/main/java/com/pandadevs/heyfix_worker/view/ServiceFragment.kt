@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.pandadevs.heyfix_worker.databinding.FragmentServiceBinding
+import com.pandadevs.heyfix_worker.utils.SharedPreferenceManager
 
 class ServiceFragment : Fragment() {
 
@@ -19,8 +20,15 @@ class ServiceFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentServiceBinding.inflate(inflater, container, false)
+        initView()
 
 
+        return binding.root
+    }
+
+    private fun initView() {
+        val user = SharedPreferenceManager(requireContext()).getUser()
+        binding.tvUser.text = user?.name
         binding.btnResolve.setOnClickListener {
             activity?.startActivity(Intent(context, RequestServiceActivity::class.java))
         }
@@ -32,9 +40,7 @@ class ServiceFragment : Fragment() {
         binding.btnReject.setOnClickListener { confirmCancelService() }
 
         binding.plPulse.start()
-        return binding.root
     }
-
 
 
     private fun confirmCancelService() {
@@ -42,7 +48,7 @@ class ServiceFragment : Fragment() {
             .setTitle("¿Cancelar solicitud?")
             .setMessage("Perderás esta oportunidad de trabajo")
             .setNegativeButton("No") { dialog, _ -> dialog.dismiss() }
-            .setPositiveButton("Sí, cancelar") { _, _ ->  }
+            .setPositiveButton("Sí, cancelar") { _, _ -> }
             .show()
     }
 
