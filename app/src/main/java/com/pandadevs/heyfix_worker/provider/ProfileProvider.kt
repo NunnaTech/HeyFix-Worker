@@ -14,7 +14,7 @@ class ProfileProvider {
             if (url != null){
                 user.picture = url.toString()
                 updateUserData(user)
-                return Result.success("data updated")
+                return Result.success(user.picture)
             }else{
                 return Result.error("error")
             }

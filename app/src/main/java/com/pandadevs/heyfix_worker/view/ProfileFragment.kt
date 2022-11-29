@@ -93,14 +93,15 @@ class ProfileFragment : Fragment() {
         user.phone_number = binding.etPhone.editText?.text.toString()
         user.transport = binding.etTransport.editText?.text.toString()
         // update work
-        user.category_id = filterCategory(binding.etWork.editText?.text.toString())
+        if(user.category_id.isNullOrEmpty()){
+            user.category_id = filterCategory(binding.etWork.editText?.text.toString())
+        }
         if (isNotEmpty) {
             viewModel.updatePhotoUser(imageUrl, user)
         }
         viewModel.updateUserData(user)
         // update shared preferences
         SharedPreferenceManager(requireContext()).saveUser(user)!!
-        loadUserData()
     }
 
     private fun filterCategory(query: String): String {
@@ -120,7 +121,7 @@ class ProfileFragment : Fragment() {
 
         // Set data
         Glide.with(requireContext()).load(user.picture).into(binding.circleImageView)
-        binding.txtUserName.text = user.name + " " + user.first_surname
+        binding.txtUserName.text = "${user.name} ${user.first_surname}"
         binding.etEmail.editText?.setText(user.email)
         binding.etName.editText?.setText(user.name)
         binding.etFirstSurname.editText?.setText(user.first_surname)
@@ -181,6 +182,13 @@ class ProfileFragment : Fragment() {
             }
             viewModel.result.observe(this) {
                 SharedPreferenceManager(requireContext()).saveUser(user)!!
+                loadUserData()
+
+            }
+            viewModel.url.observe(this) {
+                user.picture = it
+                SharedPreferenceManager(requireContext()).saveUser(user)
+                loadUserData()
             }
         }
     }
