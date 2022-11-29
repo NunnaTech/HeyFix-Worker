@@ -13,6 +13,8 @@ class ProfileViewModel : ViewModel() {
     var result: MutableLiveData<String> = MutableLiveData()
     var error: MutableLiveData<String> = MutableLiveData()
     var isDataProgress: MutableLiveData<Boolean> = MutableLiveData()
+    var url: MutableLiveData<String> = MutableLiveData()
+
 
     fun updateUserData(user: UserGet) {
         val response = ProfileProvider.updateUserData(user)
@@ -28,7 +30,7 @@ class ProfileViewModel : ViewModel() {
         viewModelScope.launch {
             val response = ProfileProvider.updateProfile(uri,user)
             if(response.resultType == ResultType.SUCCESS){
-                result.postValue(response.data!!)
+                url.postValue(response.data!!)
                 isDataProgress.value = false
             }else{
                 error.value = response.error!!
