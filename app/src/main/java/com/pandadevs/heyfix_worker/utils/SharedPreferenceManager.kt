@@ -17,6 +17,14 @@ class SharedPreferenceManager(val context: Context) {
         sharedPref.edit().putBoolean("active",true).apply()
     }
 
+    fun saveProviderMail(provider:String){
+        sharedPref.edit().putString("provider",provider).apply()
+    }
+
+    fun saveUID(uid:String){
+        sharedPref.edit().putString("uid",uid).apply()
+    }
+
     fun getSession():Boolean?{
         return sharedPref.getBoolean("active", false)
     }
