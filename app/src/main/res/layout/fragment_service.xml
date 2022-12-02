@@ -29,7 +29,6 @@
                 android:src="@drawable/ilus_voice" />
 
             <TextView
-                android:id="@+id/tvNoWork"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimenText"
@@ -64,7 +63,6 @@
                 android:src="@drawable/ilus_wait" />
 
             <TextView
-                android:id="@+id/tvOnWork"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimenText"
@@ -102,7 +100,7 @@
                 android:layout_height="wrap_content"
                 android:text="¡Jorge"
                 android:textColor="@color/md_theme_light_primary"
-                android:textSize="35sp"
+                android:textSize="@dimen/dimenTitle"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -130,7 +128,7 @@
                 <pl.bclogic.pulsator4droid.library.PulsatorLayout
                     android:id="@+id/plPulse"
                     android:layout_width="match_parent"
-                    android:layout_height="350dp"
+                    android:layout_height="300dp"
                     app:pulse_color="@color/md_theme_light_secondary"
                     app:pulse_count="8"
                     app:pulse_duration="1500"
@@ -139,18 +137,29 @@
                     app:pulse_startFromScratch="false">
 
                     <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/civPicture"
                         android:layout_width="250dp"
                         android:layout_height="250dp"
                         android:layout_centerInParent="true"
-                        android:src="@color/Accent" />
+                        android:src="@drawable/loading" />
                 </pl.bclogic.pulsator4droid.library.PulsatorLayout>
+
+                <TextView
+                    android:id="@+id/tvClient"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textColor="@color/md_theme_light_secondary"
+                    tools:text="Hector Saldaña Espinoza"
+                    android:textSize="@dimen/dimenNormalText" />
 
                 <TextView
                     android:id="@+id/tvDirection"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Calle Las Lomas No.45 Col.Alta Palmira Temixco, Morelos"
+                    tools:text="Calle Las Lomas No.45 Col.Alta Palmira Temixco, Morelos"
                     android:textSize="@dimen/dimenText" />
             </LinearLayout>
 

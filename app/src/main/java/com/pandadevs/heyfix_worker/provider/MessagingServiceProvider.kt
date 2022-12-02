@@ -7,18 +7,31 @@ import android.content.Context
 import android.content.Intent
 import android.media.RingtoneManager
 import android.os.Build
-import android.util.Log
 import androidx.core.app.NotificationCompat
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.pandadevs.heyfix_worker.R
+import com.pandadevs.heyfix_worker.data.model.NotificationDataModel
+import com.pandadevs.heyfix_worker.utils.SharedPreferenceManager
 import com.pandadevs.heyfix_worker.view.MainActivity
 
 class MessagingServiceProvider : FirebaseMessagingService() {
 
+
     override fun onMessageReceived(message: RemoteMessage) {
+        val currentUser = SharedPreferenceManager(baseContext).getUser()
+
         if (message.data.isNotEmpty()) {
-            createNotificationSystem(message.data)
+            val notificationDataModel = NotificationDataModel(
+                message.data["id"].toString(),
+                message.data["title"].toString(),
+                message.data["address"].toString(),
+                message.data["client_id"].toString(),
+                message.data["worker_id"].toString()
+            )
+            if(currentUser?.id == notificationDataModel.worker_id){
+                createNotificationSystem(notificationDataModel, currentUser.name)
+            }
         }
     }
 
@@ -27,22 +40,24 @@ class MessagingServiceProvider : FirebaseMessagingService() {
     }
 
 
-    private fun createNotificationSystem(message: MutableMap<String, String>) {
+    private fun createNotificationSystem(message: NotificationDataModel ,name:String) {
         val mainIntent = Intent(this, MainActivity::class.java)
-        mainIntent.putExtra(MainActivity.NOTIFICATION_ID, message["id"])
+        mainIntent.putExtra(MainActivity.NOTIFICATION_DATA, message)
         mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        val pendingIntent = PendingIntent.getActivity(this, 0, mainIntent, PendingIntent.FLAG_ONE_SHOT)
+        val pendingIntent =
+            PendingIntent.getActivity(this, 0, mainIntent, PendingIntent.FLAG_ONE_SHOT)
         val channel = getString(R.string.app_name)
         val sound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
         val notification = NotificationCompat
             .Builder(this, channel)
             .setSmallIcon(R.mipmap.ic_launcher)
-            .setContentTitle(message["title"])
+            .setContentTitle("${message.title} $name")
             .setContentText("Pulsa para ver los detalles")
             .setAutoCancel(true)
             .setSound(sound)
             .setContentIntent(pendingIntent)
-        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val notificationManager =
+            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel2 = NotificationChannel(
                 channel,
