@@ -18,6 +18,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.pandadevs.heyfix_worker.R
 import com.pandadevs.heyfix_worker.data.model.UserPost
 import com.pandadevs.heyfix_worker.databinding.ActivityRegisterBinding
+import com.pandadevs.heyfix_worker.utils.LoadingScreen
 import com.pandadevs.heyfix_worker.utils.SnackbarShow
 import com.pandadevs.heyfix_worker.utils.Validations.fieldNotEmpty
 import com.pandadevs.heyfix_worker.utils.Validations.fieldRegexEmail
@@ -113,6 +114,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun checkFields() {
         if (areCorrectFieldsList.none { !it } && checkPasswordsFields()) {
+            LoadingScreen.show(this,"Registrando usuario...",false)
             lifecycleScope.launch {
                 val name = binding.etName.editText?.text.toString()
                 val firstSurname = binding.etFirstSurname.editText?.text.toString()
@@ -133,6 +135,7 @@ class RegisterActivity : AppCompatActivity() {
                 )
                 viewModel.registerData(user, binding.etNewPassword.editText?.text.toString())
             }
+            LoadingScreen.hide()
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
         } else {
@@ -210,6 +213,7 @@ class RegisterActivity : AppCompatActivity() {
 
 
     fun registerWithGoogle(user: UserPost) {
+        LoadingScreen.show(this,"",false)
         FirebaseFirestore
             .getInstance()
             .collection("users")
@@ -217,10 +221,12 @@ class RegisterActivity : AppCompatActivity() {
             .set(user)
             .addOnSuccessListener {
                 SnackbarShow.showSnackbar(binding.root, "Registro Exitoso")
+                LoadingScreen.hide()
                 startActivity(Intent(this, LoginActivity::class.java))
                 finish()
             }
             .addOnFailureListener {
+                LoadingScreen.hide()
                 SnackbarShow.showSnackbar(binding.root, "El Registro de Datos fue Invalido")
             }
     }
