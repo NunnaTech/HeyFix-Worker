@@ -1,6 +1,7 @@
 package com.pandadevs.heyfix_worker.provider
 
 import com.google.firebase.firestore.FirebaseFirestore
+import com.pandadevs.heyfix_worker.data.model.NotificationDataModel
 import com.pandadevs.heyfix_worker.data.model.UserGet
 import kotlinx.coroutines.CompletableDeferred
 
@@ -12,6 +13,51 @@ class RequestServiceProvider {
                 .collection("request_service")
                 .document(id)
                 .update(mapOf("accepted" to false))
+        }
+
+
+        suspend fun isUserAvailable(idUser: String): Boolean {
+            val response = CompletableDeferred<Boolean>()
+            FirebaseFirestore
+                .getInstance()
+                .collection("users")
+                .document(idUser)
+                .get()
+                .addOnSuccessListener {
+                    if (it.exists() && it.data?.get("active").toString().toBoolean()) {
+                        response.complete(true)
+                    }
+                }
+                .addOnFailureListener {
+                    response.complete(false)
+                }
+            return response.await()
+        }
+
+
+        fun takeService(notification: NotificationDataModel) {
+
+
+            FirebaseFirestore
+                .getInstance()
+                .collection("request_service")
+                .document(notification.id)
+                .update(mapOf("accepted" to true))
+
+            FirebaseFirestore
+                .getInstance()
+                .collection("users")
+                .document(notification.client_id)
+                .update(mapOf("active" to false))
+
+            FirebaseFirestore
+                .getInstance()
+                .collection("users")
+                .document(notification.worker_id)
+                .update(mapOf("active" to false))
+
+
+
         }
 
         suspend fun getClientData(id: String): UserGet {

@@ -1,6 +1,5 @@
 package com.pandadevs.heyfix_worker.viewmodel
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.pandadevs.heyfix_worker.data.model.NotificationDataModel

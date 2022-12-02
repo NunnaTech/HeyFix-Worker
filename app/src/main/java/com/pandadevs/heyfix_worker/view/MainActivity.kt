@@ -46,12 +46,11 @@ class MainActivity : AppCompatActivity() {
             )
         }
         UserLastProvider.getAndSetToken(this)
+        UserLastProvider.setLastOnline(this)
     }
 
     override fun onStart() {
         super.onStart()
-
-        UserLastProvider.setLastOnline(this)
         if (intent.hasExtra(NOTIFICATION_DATA)) {
             val notificationData: NotificationDataModel =
                 intent.getSerializableExtra(NOTIFICATION_DATA) as NotificationDataModel

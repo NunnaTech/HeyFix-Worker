@@ -14,6 +14,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.google.android.material.textfield.TextInputLayout
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
 import com.pandadevs.heyfix_worker.R
 import com.pandadevs.heyfix_worker.data.model.UserPost
@@ -132,6 +133,7 @@ class RegisterActivity : AppCompatActivity() {
                     transport = binding.etTransport.editText?.text.toString(),
                     category_id = getIdCategory(binding.etWork.editText!!.text.toString())!!,
                     current_position = "",
+                    last_online = Timestamp.now(),
                 )
                 viewModel.registerData(user, binding.etNewPassword.editText?.text.toString())
             }
@@ -243,14 +245,15 @@ class RegisterActivity : AppCompatActivity() {
                 names[0],
                 second_surname = if (names.size > 1) names[1] else "",
                 true,
-                true,
+                false,
                 account.email.toString(),
                 phone_number = "",
                 account.photoUrl.toString(),
                 ranked_avg = 0.0,
                 transport = "",
                 category_id = "",
-                current_position = ""
+                current_position = "",
+                last_online = Timestamp.now(),
             )
             registerWithGoogle(data)
         }

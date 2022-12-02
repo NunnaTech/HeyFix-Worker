@@ -1,5 +1,7 @@
 package com.pandadevs.heyfix_worker.data.model
 
+import com.google.firebase.Timestamp
+
 data class UserPost (
     var name:String,
     var first_surname:String,
@@ -13,4 +15,5 @@ data class UserPost (
     var transport:String,
     var category_id:String,
     var current_position:String,
+    var last_online: Timestamp,
 )

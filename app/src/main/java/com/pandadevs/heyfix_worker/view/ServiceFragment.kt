@@ -47,7 +47,7 @@ class ServiceFragment : Fragment() {
 
     private fun initView() {
         val user = SharedPreferenceManager(requireContext()).getUser()
-        binding.tvUser.text = "!${user?.name}"
+        binding.tvUser.text = "¡${user?.name}"
         binding.clNoWork.visibility = View.VISIBLE
         binding.clOnWork.visibility = View.INVISIBLE
         binding.llService.visibility = View.INVISIBLE
@@ -64,7 +64,9 @@ class ServiceFragment : Fragment() {
     }
 
     private fun acceptService() {
-
+        lifecycleScope.launch {
+            requestServiceViewModel.isUserAvailable(notificationDataViewModel.notificationSelected.value!!.client_id)
+        }
     }
 
 
@@ -89,6 +91,13 @@ class ServiceFragment : Fragment() {
         requestServiceViewModel.clientData.observe(viewLifecycleOwner) {
             binding.tvClient.text = "${it.name} ${it.first_surname} ${it.second_surname}"
             Glide.with(requireContext()).load(it.picture).into(binding.civPicture)
+        }
+
+
+        requestServiceViewModel.isClientAvailable.observe(viewLifecycleOwner) {
+            if (it) {
+                RequestServiceProvider.takeService(notificationDataViewModel.notificationSelected.value!!)
+            }
         }
 
     }
