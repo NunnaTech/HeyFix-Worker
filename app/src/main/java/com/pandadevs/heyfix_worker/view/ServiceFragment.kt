@@ -14,10 +14,12 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.firebase.firestore.GeoPoint
 import com.pandadevs.heyfix_worker.R
 import com.pandadevs.heyfix_worker.databinding.FragmentServiceBinding
 import com.pandadevs.heyfix_worker.provider.RequestServiceProvider
 import com.pandadevs.heyfix_worker.utils.SharedPreferenceManager
+import com.pandadevs.heyfix_worker.utils.SnackbarShow
 import com.pandadevs.heyfix_worker.viewmodel.NotificationDataViewModel
 import com.pandadevs.heyfix_worker.viewmodel.RequestServiceViewModel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -27,23 +29,16 @@ class ServiceFragment : Fragment() {
 
     private var _binding: FragmentServiceBinding? = null
     private val binding get() = _binding!!
-
     lateinit var requestServiceViewModel: RequestServiceViewModel
-
     private val notificationDataViewModel: NotificationDataViewModel by activityViewModels()
 
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentServiceBinding.inflate(inflater, container, false)
         requestServiceViewModel = ViewModelProvider(this)[RequestServiceViewModel::class.java]
         initView()
         initObservers()
         return binding.root
     }
-
 
     private fun initView() {
         val user = SharedPreferenceManager(requireContext()).getUser()
@@ -55,9 +50,7 @@ class ServiceFragment : Fragment() {
         binding.btnGoOnService.setOnClickListener { goToRequestServiceActivity() }
         binding.btnReject.setOnClickListener { confirmCancelService() }
         binding.plPulse.start()
-
     }
-
 
     private fun goToRequestServiceActivity() {
         activity?.startActivity(Intent(context, RequestServiceActivity::class.java))
@@ -65,18 +58,16 @@ class ServiceFragment : Fragment() {
 
     private fun acceptService() {
         lifecycleScope.launch {
-            requestServiceViewModel.isUserAvailable(notificationDataViewModel.notificationSelected.value!!.client_id)
+            requestServiceViewModel.isUserAvailable(
+                notificationDataViewModel.notificationSelected.value!!.client_id
+            )
         }
     }
 
-
     private fun initObservers() {
-
         notificationDataViewModel.notificationSelected.observe(viewLifecycleOwner) {
             if (it != null) {
-                lifecycleScope.launch {
-                    requestServiceViewModel.getClientData(it.client_id)
-                }
+                lifecycleScope.launch { requestServiceViewModel.getClientData(it.client_id) }
                 binding.tvDirection.text = it.address
                 binding.clNoWork.visibility = View.INVISIBLE
                 binding.clOnWork.visibility = View.INVISIBLE
@@ -93,13 +84,31 @@ class ServiceFragment : Fragment() {
             Glide.with(requireContext()).load(it.picture).into(binding.civPicture)
         }
 
-
         requestServiceViewModel.isClientAvailable.observe(viewLifecycleOwner) {
             if (it) {
-                RequestServiceProvider.takeService(notificationDataViewModel.notificationSelected.value!!)
+                takeService()
+            } else {
+                notificationDataViewModel.clearNotification()
+                findNavController().navigate(R.id.action_itServices_to_itHome)
+                SnackbarShow.showSnackbar(binding.root, "El cliente ya no está disponible")
             }
         }
 
+        requestServiceViewModel.takeServiceCompleted.observe(viewLifecycleOwner) {
+            if (it) {
+                goToRequestServiceActivity()
+            }
+        }
+    }
+
+    private fun takeService() {
+        lifecycleScope.launch {
+            val userCategoryId = SharedPreferenceManager(requireContext()).getUser()!!.category_id
+            requestServiceViewModel.takeService(
+                notificationDataViewModel.notificationSelected.value!!,
+                GeoPoint(MainActivity.LATITUD_USER, MainActivity.LONGITUDE_USER), userCategoryId
+            )
+        }
     }
 
     private fun confirmCancelService() {

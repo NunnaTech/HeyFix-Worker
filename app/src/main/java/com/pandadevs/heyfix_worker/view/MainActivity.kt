@@ -20,6 +20,8 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         const val NOTIFICATION_DATA = "NOTIFICATION_DATA"
+        var LATITUD_USER: Double = 0.0
+        var LONGITUDE_USER: Double = 0.0
     }
 
     lateinit var binding: ActivityMainBinding
@@ -40,10 +42,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun initServiceLocationLiveData() {
         LocationLiveDataProvider(this).observe(this) {
-            UserLastProvider.setLastCurrentPosition(
-                this@MainActivity,
-                GeoPoint(it.latitude, it.longitude)
-            )
+            LATITUD_USER = it.latitude
+            LONGITUDE_USER = it.longitude
+            UserLastProvider.setLastCurrentPosition(this@MainActivity, GeoPoint(it.latitude, it.longitude))
         }
         UserLastProvider.getAndSetToken(this)
         UserLastProvider.setLastOnline(this)
@@ -52,8 +53,7 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         if (intent.hasExtra(NOTIFICATION_DATA)) {
-            val notificationData: NotificationDataModel =
-                intent.getSerializableExtra(NOTIFICATION_DATA) as NotificationDataModel
+            val notificationData: NotificationDataModel = intent.getSerializableExtra(NOTIFICATION_DATA) as NotificationDataModel
             notificationDataViewModel.selectedNotification(notificationData)
             navController.navigate(R.id.action_itHome_to_itServices)
             intent.removeExtra(NOTIFICATION_DATA)
