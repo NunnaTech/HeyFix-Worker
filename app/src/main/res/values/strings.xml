@@ -12,7 +12,7 @@
     <!--    ChangePassword Activity-->
     <string name="strTitleChangePass">Cambiar</string>
     <string name="strSubTitleChangePass">Contraseña</string>
-    <string name="strPassRequest">Ingresa tu contraseña actual, una nueva contraseña y su confirmación, demás estas deben tener entre 8 a 10 carácteres</string>
+    <string name="strPassRequest">Ingresa una nueva contraseña y su confirmación, demás estas deben tener entre 8 a 10 carácteres</string>
     <string name="strChangePass">Cambiar Contraseña</string>
     <string name="strCurrentlyPassword">Contraseña actual</string>
     <string name="strNewPassword">Nueva contraseña</string>
