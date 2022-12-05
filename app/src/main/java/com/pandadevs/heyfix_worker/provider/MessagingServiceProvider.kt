@@ -17,20 +17,17 @@ import com.pandadevs.heyfix_worker.view.MainActivity
 
 class MessagingServiceProvider : FirebaseMessagingService() {
 
-
     override fun onMessageReceived(message: RemoteMessage) {
         val currentUser = SharedPreferenceManager(baseContext).getUser()
 
         if (message.data.isNotEmpty()) {
-            val notificationDataModel = NotificationDataModel(
+            val notification = NotificationDataModel(
                 message.data["id"].toString(),
                 message.data["title"].toString(),
-                message.data["address"].toString(),
-                message.data["client_id"].toString(),
-                message.data["worker_id"].toString()
+                message.data["worker_id"].toString(),
             )
-            if(currentUser?.id == notificationDataModel.worker_id){
-                createNotificationSystem(notificationDataModel, currentUser.name)
+            if (currentUser?.id == notification.worker_id) {
+                createNotificationSystem(notification, currentUser.name)
             }
         }
     }
@@ -40,9 +37,8 @@ class MessagingServiceProvider : FirebaseMessagingService() {
     }
 
 
-    private fun createNotificationSystem(message: NotificationDataModel ,name:String) {
+    private fun createNotificationSystem(notification: NotificationDataModel, name: String) {
         val mainIntent = Intent(this, MainActivity::class.java)
-        mainIntent.putExtra(MainActivity.NOTIFICATION_DATA, message)
         mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
         val pendingIntent =
             PendingIntent.getActivity(this, 0, mainIntent, PendingIntent.FLAG_ONE_SHOT)
@@ -51,7 +47,7 @@ class MessagingServiceProvider : FirebaseMessagingService() {
         val notification = NotificationCompat
             .Builder(this, channel)
             .setSmallIcon(R.mipmap.ic_launcher)
-            .setContentTitle("${message.title} $name")
+            .setContentTitle("${notification.title} $name")
             .setContentText("Pulsa para ver los detalles")
             .setAutoCancel(true)
             .setSound(sound)

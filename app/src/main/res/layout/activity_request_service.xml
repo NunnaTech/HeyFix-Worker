@@ -10,7 +10,6 @@
         android:id="@+id/ablAPp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/md_theme_light_primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -20,21 +19,80 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:navigationIcon="@drawable/ic_arrow_back"
-            app:navigationIconTint="@color/SoftlyWhite"
-            app:title="Persona"
-            app:titleTextColor="@color/SoftlyWhite" />
+            app:title="Servicio en proceso" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <fragment
-        android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
+    <!-- <fragment
+         android:id="@+id/map"
+         android:name="com.google.android.gms.maps.SupportMapFragment"
+         android:layout_width="match_parent"
+         android:layout_height="0dp"
+         app:layout_constraintBottom_toTopOf="@+id/llGroupButtons"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toBottomOf="@+id/ablAPp" />-->
+
+
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimenScreenPadding"
+        android:backgroundTint="@color/md_theme_light_onPrimary"
         app:layout_constraintBottom_toTopOf="@+id/llGroupButtons"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ablAPp" />
+        app:layout_constraintTop_toBottomOf="@+id/ablAPp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/civPicture"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:src="@drawable/loading" />
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:lines="1"
+                android:text="Cargando..."
+                android:textColor="@color/md_theme_light_primary"
+                android:textSize="@dimen/dimenSubTitle"
+                android:textStyle="bold" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="5dp"
+                    android:src="@drawable/ilus_address" />
+
+                <TextView
+                    android:id="@+id/tvAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="Cargando dirección..."
+                    android:textSize="@dimen/dimenText" />
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
     <LinearLayout
         android:id="@+id/llGroupButtons"
@@ -43,10 +101,6 @@
         android:orientation="vertical"
         android:padding="@dimen/dimenScreenPadding"
         app:layout_constraintBottom_toBottomOf="parent">
-
-        <com.google.android.material.bottomsheet.BottomSheetDragHandleView
-            android:layout_width="match_parent"
-            android:layout_height="30dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -60,6 +114,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="@color/Accent"
+                android:enabled="false"
                 android:text="@string/strArrived"
                 app:icon="@drawable/ic_directions" />
 
@@ -74,23 +129,49 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="@color/md_theme_light_secondary"
+                android:enabled="false"
                 android:text="@string/strGoToChat"
                 app:icon="@drawable/ic_chat" />
         </LinearLayout>
 
-        <Button
-            android:id="@+id/btnGoogleMaps"
-            style="@style/Widget.Material3.Button.OutlinedButton.Icon"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_google_maps"
-            android:text="@string/strOpenMaps" />
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnGoogleMaps"
+                style="@style/Widget.Material3.Button.OutlinedButton.Icon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableLeft="@drawable/ic_google_maps"
+                android:enabled="false"
+                android:text="@string/strOpenMaps" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="10dp" />
+
+            <Button
+                android:id="@+id/btnCall"
+                style="@style/Widget.Material3.Button.OutlinedButton.Icon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:enabled="false"
+                android:text="@string/strGoToCall"
+                app:icon="@drawable/ic_call" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/btnCancel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/md_theme_light_tertiary"
+            android:enabled="false"
             android:text="@string/strCancelService"
             app:icon="@drawable/ic_cancel" />
 
@@ -98,6 +179,7 @@
             android:id="@+id/btnFinish"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:enabled="false"
             android:text="@string/strFinishService"
             app:icon="@drawable/ic_complete" />
     </LinearLayout>

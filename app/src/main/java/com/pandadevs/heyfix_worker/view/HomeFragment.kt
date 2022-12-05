@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import com.pandadevs.heyfix_worker.R
 import com.pandadevs.heyfix_worker.data.model.UserGet
 import com.pandadevs.heyfix_worker.databinding.FragmentHomeBinding
 import com.pandadevs.heyfix_worker.utils.SharedPreferenceManager
@@ -19,11 +21,9 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-
         initView()
-
         return binding.root
     }
 
@@ -32,6 +32,11 @@ class HomeFragment : Fragment() {
         binding.tvName.text = user?.name
         binding.tvWelcome.text = TimeDay.getTime()
         binding.tvRate.text = user?.ranked_avg.toString()
+        if (user?.category_id == "") {
+            binding.mcvCompleteProfile.visibility = View.VISIBLE
+        } else {
+            binding.mcvCompleteProfile.visibility = View.GONE
+        }
     }
 
 }

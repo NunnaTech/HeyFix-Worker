@@ -7,6 +7,8 @@
     <string name="strHistoryServicesEmpty">No hay historial de servicios</string>
     <string name="strAverageRates">Promedio de tus calificaciones</string>
     <string name="strAverageDetails">Has alcanzo un total de todos los servicios realizados de:</string>
+    <string name="strNoCompleteProfile">Perfil sin completar</string>
+    <string name="strNoCompleteProfileContent">Se necesita que completes tu perfil o no rebicirás solicitudes de trabajo</string>
 
 
     <!--    ChangePassword Activity-->
@@ -70,9 +72,10 @@
     <!--  Request service Activity  -->
     <string name="strServiceInProgress">Servicio en proceso</string>
     <string name="strGoToChat">Chat</string>
+    <string name="strGoToCall">Llamar</string>
     <string name="strCancelService">Cancelar servicio</string>
     <string name="strArrived">Llegué</string>
-    <string name="strOpenMaps">Abrir con Google Maps</string>
+    <string name="strOpenMaps">Abrir Maps</string>
     <string name="strFinishService">Finalizar servicio</string>
 
     <!--   Profile Fragment-->

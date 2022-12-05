@@ -3,7 +3,9 @@ package com.pandadevs.heyfix_worker.provider
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.GeoPoint
+import com.pandadevs.heyfix_worker.data.model.HiredServiceModel
 import com.pandadevs.heyfix_worker.data.model.NotificationDataModel
+import com.pandadevs.heyfix_worker.data.model.RequestServiceModel
 import com.pandadevs.heyfix_worker.data.model.UserGet
 import kotlinx.coroutines.CompletableDeferred
 
@@ -16,7 +18,6 @@ class RequestServiceProvider {
                 .document(id)
                 .update(mapOf("accepted" to false))
         }
-
 
         suspend fun isUserAvailable(userId: String): Boolean {
             val response = CompletableDeferred<Boolean>()
@@ -36,47 +37,53 @@ class RequestServiceProvider {
             return response.await()
         }
 
-
         suspend fun takeService(
-            notification: NotificationDataModel,
+            requestServiceModel: RequestServiceModel,
             userUbication: GeoPoint,
-            userCategoryId: String
+            userCategoryId: String,
+            nameWorker: String,
+            nameClient: String,
+            address: String
         ): Boolean {
-
-            val response: CompletableDeferred<Boolean> = CompletableDeferred<Boolean>()
+            val response = CompletableDeferred<Boolean>()
             FirebaseFirestore
                 .getInstance()
                 .collection("request_service")
-                .document(notification.id)
+                .document(requestServiceModel.id)
                 .update(mapOf("accepted" to true))
 
             FirebaseFirestore
                 .getInstance()
                 .collection("users")
-                .document(notification.client_id)
+                .document(requestServiceModel.client_id)
                 .update(mapOf("active" to false))
 
             FirebaseFirestore
                 .getInstance()
                 .collection("users")
-                .document(notification.worker_id)
+                .document(requestServiceModel.worker_id)
                 .update(mapOf("active" to false))
-
 
             FirebaseFirestore
                 .getInstance()
                 .collection("hired_service")
-                .document(notification.id)
+                .document(requestServiceModel.id)
                 .set(
-                    hashMapOf(
-                        "worker_ubication" to userUbication,
-                        "date_hired" to Timestamp.now(),
-                        "ranked" to 0,
-                        "completed" to false,
-                        "review" to "",
-                        "client_id" to notification.client_id,
-                        "worker_id" to notification.worker_id,
-                        "category_id" to userCategoryId
+                    HiredServiceModel(
+                        client_ubication = requestServiceModel.client_ubication,
+                        client_name = nameClient,
+                        worker_ubication = userUbication,
+                        worker_name = nameWorker,
+                        date_hired = Timestamp.now(),
+                        address = address,
+                        ranked = 0,
+                        completed = false,
+                        canceled = false,
+                        arrived = false,
+                        review = "",
+                        client_id = requestServiceModel.client_id,
+                        worker_id = requestServiceModel.worker_id,
+                        category_id = userCategoryId
                     )
                 ).addOnSuccessListener {
                     response.complete(true)
@@ -84,7 +91,6 @@ class RequestServiceProvider {
                     response.complete(false)
                 }
             return response.await()
-
         }
 
         suspend fun getClientData(id: String): UserGet {

@@ -38,4 +38,11 @@
         <item name="harmonizeSoftlyBlack">true</item>
         <item name="colorPrimaryInverse">@color/md_theme_light_inversePrimary</item>
     </style>
+
+    <style name="MyThemeOverlay.MaterialAlertDialog.Canceled" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="android:background">@color/md_theme_light_errorContainer</item>
+        <item name="materialAlertDialogTitlePanelStyle">@style/MaterialAlertDialog.Material3.Title.Panel.CenterStacked</item>
+        <item name="materialAlertDialogTitleIconStyle">@style/MaterialAlertDialog.Material3.Title.Icon.CenterStacked</item>
+        <item name="materialAlertDialogTitleTextStyle">@style/MaterialAlertDialog.Material3.Title.Text.CenterStacked</item>
+    </style>
 </resources>
