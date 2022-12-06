@@ -19,4 +19,5 @@ data class HiredServiceModel(
     var client_id: String,
     var worker_id: String,
     var category_id: String,
+    var category_name:String
 )

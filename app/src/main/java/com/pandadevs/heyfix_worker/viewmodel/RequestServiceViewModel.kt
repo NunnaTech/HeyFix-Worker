@@ -31,7 +31,7 @@ class RequestServiceViewModel : ViewModel() {
         userCategoryId: String,
         nameWorker: String,
         nameClient: String,
-        address: String
+        address: String,
     ) {
         val data: Boolean =
             RequestServiceProvider.takeService(

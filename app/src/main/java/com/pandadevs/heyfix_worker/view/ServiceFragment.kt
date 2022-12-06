@@ -8,12 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.NavigationUI
 import com.bumptech.glide.Glide
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.firestore.GeoPoint
-import com.pandadevs.heyfix_worker.R
 import com.pandadevs.heyfix_worker.data.model.UserGet
 import com.pandadevs.heyfix_worker.databinding.FragmentServiceBinding
 import com.pandadevs.heyfix_worker.provider.RequestServiceProvider
@@ -64,7 +61,7 @@ class ServiceFragment : Fragment() {
                 binding.tvDirection.text = addressClient
                 binding.clNoWork.visibility = View.INVISIBLE
                 binding.llService.visibility = View.VISIBLE
-            } else goToHomeFragment()
+            } else changeViewService()
         }
 
         requestServiceViewModel.clientData.observe(viewLifecycleOwner) {
@@ -77,7 +74,7 @@ class ServiceFragment : Fragment() {
             if (it) takeService()
             else {
                 SnackbarShow.showSnackbar(binding.root, "El cliente ya no está disponible")
-                goToHomeFragment()
+                changeViewService()
             }
         }
 
@@ -120,14 +117,14 @@ class ServiceFragment : Fragment() {
             .show()
     }
 
-    private fun goToHomeFragment() {
+    private fun changeViewService() {
         binding.clNoWork.visibility = View.VISIBLE
         binding.llService.visibility = View.INVISIBLE
     }
 
     private fun cancelService() {
         RequestServiceProvider.cancelRequestService(idRequestService)
-        goToHomeFragment()
+        changeViewService()
     }
 
 }

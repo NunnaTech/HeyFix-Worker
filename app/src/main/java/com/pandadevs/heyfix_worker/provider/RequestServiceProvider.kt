@@ -46,6 +46,14 @@ class RequestServiceProvider {
             address: String
         ): Boolean {
             val response = CompletableDeferred<Boolean>()
+            val categoryName = CompletableDeferred<String>()
+            FirebaseFirestore
+                .getInstance()
+                .collection("categories")
+                .document(userCategoryId)
+                .get()
+                .addOnSuccessListener { categoryName.complete(it.data?.get("name").toString()) }
+
             FirebaseFirestore
                 .getInstance()
                 .collection("request_service")
@@ -83,7 +91,8 @@ class RequestServiceProvider {
                         review = "",
                         client_id = requestServiceModel.client_id,
                         worker_id = requestServiceModel.worker_id,
-                        category_id = userCategoryId
+                        category_id = userCategoryId,
+                        category_name = categoryName.await()
                     )
                 ).addOnSuccessListener {
                     response.complete(true)

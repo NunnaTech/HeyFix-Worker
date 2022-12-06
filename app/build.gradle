@@ -9,12 +9,12 @@ plugins {
 
 android {
     namespace 'com.pandadevs.heyfix_worker'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.pandadevs.heyfix_worker"
         minSdk 26
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -71,6 +71,9 @@ dependencies {
     implementation 'com.google.android.gms:play-services-auth:20.3.0'
     implementation 'com.google.android.gms:play-services-location:21.0.1'
     implementation 'pl.bclogic:pulsator4droid:1.0.3'
+
+    // Noti
+    implementation 'androidx.work:work-runtime-ktx:2.7.0'
 
 
 }

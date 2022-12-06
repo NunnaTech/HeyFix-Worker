@@ -67,6 +67,7 @@ class HiredServiceViewModel : ViewModel() {
                         client_id = data["client_id"].toString(),
                         worker_id = data["worker_id"].toString(),
                         category_id = data["category_id"].toString(),
+                        category_name = ""
                     )
                     isThereACurrentService.value = hiredService
                 } else {
@@ -102,6 +103,7 @@ class HiredServiceViewModel : ViewModel() {
                         client_id = data["client_id"].toString(),
                         worker_id = data["worker_id"].toString(),
                         category_id = data["category_id"].toString(),
+                        category_name = ""
                     )
                     isThereACurrentServiceBoolean.value = hiredService
                 } else {

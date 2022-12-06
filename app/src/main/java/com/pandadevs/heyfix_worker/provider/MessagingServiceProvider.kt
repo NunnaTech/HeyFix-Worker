@@ -40,8 +40,12 @@ class MessagingServiceProvider : FirebaseMessagingService() {
     private fun createNotificationSystem(notification: NotificationDataModel, name: String) {
         val mainIntent = Intent(this, MainActivity::class.java)
         mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        val pendingIntent =
-            PendingIntent.getActivity(this, 0, mainIntent, PendingIntent.FLAG_ONE_SHOT)
+        val pendingIntent = PendingIntent.getActivity(
+            this,
+            0,
+            mainIntent,
+            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+        )
         val channel = getString(R.string.app_name)
         val sound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
         val notification = NotificationCompat
