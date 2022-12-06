@@ -26,7 +26,6 @@ class HomeFragment : Fragment() {
     private val historialServicesViewModel: HistorialServicesViewModel by activityViewModels()
     var adapter: HistorialServiceAdapter? = null;
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -51,7 +50,6 @@ class HomeFragment : Fragment() {
                 binding.tvNoHistorialServices.visibility = View.VISIBLE
                 binding.rvHistorialServices.visibility = View.GONE
             }
-
         }
         historialServicesViewModel.rateServices.observe(viewLifecycleOwner) {
             binding.tvRate.text = it.toString().substring(0, 3)
@@ -66,5 +64,4 @@ class HomeFragment : Fragment() {
         else binding.mcvCompleteProfile.visibility = View.GONE
         lifecycleScope.launch { historialServicesViewModel.getHistorialServices(user!!.id)}
     }
-
 }
