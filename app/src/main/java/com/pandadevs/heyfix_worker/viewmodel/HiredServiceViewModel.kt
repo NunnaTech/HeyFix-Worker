@@ -29,6 +29,7 @@ class HiredServiceViewModel : ViewModel() {
 
     fun cancelService(id: String, idClient: String, idWorker: String) {
         HiredServiceProvider.statusService(id, "canceled")
+        HiredServiceProvider.deleteChatRealTime(id)
         HiredServiceProvider.activeUsers(idClient, idWorker)
     }
 
@@ -38,6 +39,7 @@ class HiredServiceViewModel : ViewModel() {
 
     fun completedService(id: String, idClient: String, idWorker: String) {
         HiredServiceProvider.statusService(id, "completed")
+        HiredServiceProvider.deleteChatRealTime(id)
         HiredServiceProvider.activeUsers(idClient, idWorker)
     }
 

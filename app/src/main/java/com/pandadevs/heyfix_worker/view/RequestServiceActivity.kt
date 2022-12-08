@@ -11,7 +11,10 @@ import com.bumptech.glide.Glide
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.firestore.GeoPoint
 import com.pandadevs.heyfix_worker.R
+import com.pandadevs.heyfix_worker.data.model.ChatModel
 import com.pandadevs.heyfix_worker.databinding.ActivityRequestServiceBinding
+import com.pandadevs.heyfix_worker.provider.LocationLiveDataProvider
+import com.pandadevs.heyfix_worker.provider.UserLastProvider
 import com.pandadevs.heyfix_worker.utils.SharedPreferenceManager
 import com.pandadevs.heyfix_worker.viewmodel.HiredServiceViewModel
 import kotlinx.coroutines.launch
@@ -20,7 +23,9 @@ class RequestServiceActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRequestServiceBinding
     private var idServideHired: String = ""
+    private var chatModel: ChatModel = ChatModel("", "", "")
     private val hiredServiceViewModel: HiredServiceViewModel by viewModels()
+
     companion object {
         const val ID_SERVICE_HIRED = "ID_SERVICE_HIRED"
     }
@@ -45,6 +50,8 @@ class RequestServiceActivity : AppCompatActivity() {
     private fun initObservers() {
         hiredServiceViewModel.isThereACurrentService.observe(this) {
             if (it != null) {
+                chatModel.id = it.id
+                chatModel.client_name = it.client_name
                 binding.tvAddress.text = it.address
                 binding.tvName.text = it.client_name
                 binding.btnGoogleMaps.isEnabled = true
@@ -53,7 +60,7 @@ class RequestServiceActivity : AppCompatActivity() {
                 binding.btnCancel.isEnabled = true
                 binding.btnChat.isEnabled = true
                 binding.btnGoogleMaps.setOnClickListener { _ -> openGoogleMaps(it.worker_ubication, it.client_ubication) }
-                binding.btnChat.setOnClickListener { startActivity(Intent(this, ChatActivity::class.java)) }
+                binding.btnChat.setOnClickListener { goToChatActivity() }
                 binding.btnArrived.setOnClickListener { confirmArrived() }
                 binding.btnCancel.setOnClickListener { confirmCancel() }
                 binding.btnFinish.setOnClickListener { confirmFinished() }
@@ -62,10 +69,23 @@ class RequestServiceActivity : AppCompatActivity() {
         }
 
         hiredServiceViewModel.dataClient.observe(this) {
+            chatModel.client_picture = it.picture
             binding.btnCall.isEnabled = true
             Glide.with(this).load(it.picture).into(binding.civPicture)
             binding.btnCall.setOnClickListener { _ -> openCall(it.phone_number) }
         }
+
+        LocationLiveDataProvider(this).observe(this){
+            if(chatModel.id.isNotEmpty()){
+                UserLastProvider.setLastCurrentPositionOnHiredService(chatModel.id, GeoPoint(it.latitude, it.longitude))
+            }
+        }
+    }
+
+    private fun goToChatActivity() {
+        val intent = Intent(this, ChatActivity::class.java)
+        intent.putExtra(ChatActivity.CHAT_MODEL, chatModel)
+        startActivity(intent)
     }
 
     private fun callBackServiceCanceled() {
@@ -157,7 +177,10 @@ class RequestServiceActivity : AppCompatActivity() {
             )
         }
 
-        MaterialAlertDialogBuilder(this, com.google.android.material.R.style.ThemeOverlay_Material3_MaterialAlertDialog_Centered)
+        MaterialAlertDialogBuilder(
+            this,
+            com.google.android.material.R.style.ThemeOverlay_Material3_MaterialAlertDialog_Centered
+        )
             .setTitle("Servicio finalizado")
             .setIcon(R.drawable.ilus_complete)
             .setCancelable(false)
@@ -165,5 +188,4 @@ class RequestServiceActivity : AppCompatActivity() {
             .setPositiveButton("Aceptar") { _, _ -> goToHomeActivity() }
             .show()
     }
-
 }

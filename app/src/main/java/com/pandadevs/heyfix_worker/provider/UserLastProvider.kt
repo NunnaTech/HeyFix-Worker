@@ -11,13 +11,21 @@ import com.pandadevs.heyfix_worker.utils.SharedPreferenceManager
 class UserLastProvider {
 
     companion object {
-        fun setLastOnline(context: Context): Unit {
+        fun setLastOnline(context: Context) {
             val userId = SharedPreferenceManager(context).getUser()!!.id
             FirebaseFirestore
                 .getInstance()
                 .collection("users")
                 .document(userId)
                 .update(mapOf("last_online" to Timestamp.now()))
+        }
+
+        fun setLastCurrentPositionOnHiredService(id:String,location: GeoPoint){
+            FirebaseFirestore
+                .getInstance()
+                .collection("hired_service")
+                .document(id)
+                .update("worker_ubication", location)
         }
 
         fun setLastCurrentPosition(context: Context, location: GeoPoint) {

@@ -38,7 +38,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initView()
-        initServiceLocationLiveData()
     }
 
     private fun initView() {
@@ -54,7 +53,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initObservers() {
         requestServiceViewModel.isThereACurrentRequest.observe(this) {
-            if (it != null) {
+            if (it != null && it.accepted.isNullOrEmpty()) {
                 goToServiceFragment()
             }
         }
@@ -72,10 +71,7 @@ class MainActivity : AppCompatActivity() {
         LocationLiveDataProvider(this).observe(this) {
             LATITUD_USER = it.latitude
             LONGITUDE_USER = it.longitude
-            UserLastProvider.setLastCurrentPosition(
-                this@MainActivity,
-                GeoPoint(it.latitude, it.longitude)
-            )
+            UserLastProvider.setLastCurrentPosition(this, GeoPoint(it.latitude, it.longitude))
         }
         UserLastProvider.getAndSetToken(this)
         UserLastProvider.setLastOnline(this)
@@ -92,5 +88,6 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         initObservers()
+        initServiceLocationLiveData()
     }
 }

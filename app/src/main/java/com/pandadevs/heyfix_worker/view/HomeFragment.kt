@@ -60,7 +60,7 @@ class HomeFragment : Fragment() {
         val user: UserGet? = SharedPreferenceManager(this.requireContext()).getUser()
         binding.tvName.text = user?.name
         binding.tvWelcome.text = TimeDay.getTime()
-        if (user?.category_id == "") binding.mcvCompleteProfile.visibility = View.VISIBLE
+        if (user?.category_id == "" || user?.phone_number=="") binding.mcvCompleteProfile.visibility = View.VISIBLE
         else binding.mcvCompleteProfile.visibility = View.GONE
         lifecycleScope.launch { historialServicesViewModel.getHistorialServices(user!!.id)}
     }
