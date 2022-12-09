@@ -7,12 +7,14 @@
     <string name="strHistoryServicesEmpty">No hay historial de servicios</string>
     <string name="strAverageRates">Promedio de tus calificaciones</string>
     <string name="strAverageDetails">Has alcanzo un total de todos los servicios realizados de:</string>
+    <string name="strNoCompleteProfile">Perfil sin completar</string>
+    <string name="strNoCompleteProfileContent">Se necesita que completes tu perfil o no rebicirás solicitudes de trabajo</string>
 
 
     <!--    ChangePassword Activity-->
     <string name="strTitleChangePass">Cambiar</string>
     <string name="strSubTitleChangePass">Contraseña</string>
-    <string name="strPassRequest">Ingresa tu contraseña actual, una nueva contraseña y su confirmación, demás estas deben tener entre 8 a 10 carácteres</string>
+    <string name="strPassRequest">Ingresa una nueva contraseña correcta y su confirmación en tu cuenta para iniciar sesión a nuestra aplicación con una nueva sesión</string>
     <string name="strChangePass">Cambiar Contraseña</string>
     <string name="strCurrentlyPassword">Contraseña actual</string>
     <string name="strNewPassword">Nueva contraseña</string>
@@ -70,16 +72,22 @@
     <!--  Request service Activity  -->
     <string name="strServiceInProgress">Servicio en proceso</string>
     <string name="strGoToChat">Chat</string>
+    <string name="strGoToCall">Llamar</string>
     <string name="strCancelService">Cancelar servicio</string>
     <string name="strArrived">Llegué</string>
+    <string name="strOpenMaps">Abrir Maps</string>
     <string name="strFinishService">Finalizar servicio</string>
 
     <!--   Profile Fragment-->
     <string name="strPhone">Teléfono</string>
 
     <!--   Service Fragment-->
-    <string name="strServiceDetails">Tienes una nueva oferta de trabajo</string>
+    <string name="strServiceDetails">solicitan de tu servicio!</string>
+    <string name="strNoWork">Sin solicitudes de trabajo aún</string>
+    <string name="strOnWork">Estás en un servicio en proceso</string>
+    <string name="strGoToWork">Ir al servicio</string>
     <string name="strAccept">Aceptar</string>
     <string name="strReject">Rechazar</string>
+    <string name="title_activity_maps">MapsActivity</string>
 
 </resources>

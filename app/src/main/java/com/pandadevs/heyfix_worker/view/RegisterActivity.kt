@@ -14,10 +14,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.google.android.material.textfield.TextInputLayout
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
 import com.pandadevs.heyfix_worker.R
 import com.pandadevs.heyfix_worker.data.model.UserPost
 import com.pandadevs.heyfix_worker.databinding.ActivityRegisterBinding
+import com.pandadevs.heyfix_worker.utils.LoadingScreen
 import com.pandadevs.heyfix_worker.utils.SnackbarShow
 import com.pandadevs.heyfix_worker.utils.Validations.fieldNotEmpty
 import com.pandadevs.heyfix_worker.utils.Validations.fieldRegexEmail
@@ -113,6 +115,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun checkFields() {
         if (areCorrectFieldsList.none { !it } && checkPasswordsFields()) {
+            LoadingScreen.show(this,"Registrando usuario...",false)
             lifecycleScope.launch {
                 val name = binding.etName.editText?.text.toString()
                 val firstSurname = binding.etFirstSurname.editText?.text.toString()
@@ -130,9 +133,11 @@ class RegisterActivity : AppCompatActivity() {
                     transport = binding.etTransport.editText?.text.toString(),
                     category_id = getIdCategory(binding.etWork.editText!!.text.toString())!!,
                     current_position = "",
+                    last_online = Timestamp.now(),
                 )
                 viewModel.registerData(user, binding.etNewPassword.editText?.text.toString())
             }
+            LoadingScreen.hide()
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
         } else {
@@ -210,6 +215,7 @@ class RegisterActivity : AppCompatActivity() {
 
 
     fun registerWithGoogle(user: UserPost) {
+        LoadingScreen.show(this,"",false)
         FirebaseFirestore
             .getInstance()
             .collection("users")
@@ -217,10 +223,12 @@ class RegisterActivity : AppCompatActivity() {
             .set(user)
             .addOnSuccessListener {
                 SnackbarShow.showSnackbar(binding.root, "Registro Exitoso")
+                LoadingScreen.hide()
                 startActivity(Intent(this, LoginActivity::class.java))
                 finish()
             }
             .addOnFailureListener {
+                LoadingScreen.hide()
                 SnackbarShow.showSnackbar(binding.root, "El Registro de Datos fue Invalido")
             }
     }
@@ -237,14 +245,15 @@ class RegisterActivity : AppCompatActivity() {
                 names[0],
                 second_surname = if (names.size > 1) names[1] else "",
                 true,
-                true,
+                false,
                 account.email.toString(),
                 phone_number = "",
                 account.photoUrl.toString(),
                 ranked_avg = 0.0,
                 transport = "",
                 category_id = "",
-                current_position = ""
+                current_position = "",
+                last_online = Timestamp.now(),
             )
             registerWithGoogle(data)
         }

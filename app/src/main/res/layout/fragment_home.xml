@@ -16,27 +16,64 @@
             android:id="@+id/tvWelcome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Buenos días,"
             android:textSize="@dimen/dimenTitle"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:text="Buenos días," />
 
         <TextView
             android:id="@+id/tvName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hector"
+            android:layout_marginBottom="15dp"
             android:textColor="@color/md_theme_light_primary"
             android:textSize="@dimen/dimenTitle"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:text="Hector" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/mcvCompleteProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:backgroundTint="@color/md_theme_light_errorContainer"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/strNoCompleteProfile"
+                    android:textColor="@color/md_theme_light_tertiary"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/strNoCompleteProfileContent" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/ilus_warning" />
+
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="15dp"
-            android:backgroundTint="@color/md_theme_light_onPrimary"
-            android:checkable="false"
-            android:clickable="true"
-            android:focusable="false">
+            android:layout_marginBottom="15dp"
+            android:backgroundTint="@color/md_theme_light_onPrimary">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -66,15 +103,15 @@
                     <View
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:background="@drawable/ic_star"
-                        android:backgroundTint="#DCE000" />
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/ilus_star" />
 
                     <TextView
                         android:id="@+id/tvRate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        tools:text=""
-                        android:textSize="40sp" />
+                        android:textSize="40sp"
+                        android:text="0.0" />
                 </LinearLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -88,6 +125,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/tvNoHistorialServices"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -95,10 +133,11 @@
             android:visibility="visible" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvHistorialServices"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:itemCount="4"
-            tools:listitem="@layout/item_service" />
+            tools:listitem="@layout/item_history_service" />
 
     </LinearLayout>
 

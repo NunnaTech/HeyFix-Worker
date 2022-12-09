@@ -35,51 +35,39 @@
         app:layout_constraintTop_toBottomOf="@+id/ablAPp">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/circleImageView"
+            android:id="@+id/civPicture"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@color/Accent"
+            android:src="@drawable/loading"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
 
         <TextView
             android:id="@+id/tvName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:text="Person"
-            tools:text="Mario Nava"
+            android:text="Cargando nombre..."
             android:textColor="@color/md_theme_light_surface"
             android:textSize="@dimen/dimenNormalText"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/circleImageView"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tvCar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Car"
-            tools:text="Nissan Versa 2021"
-            android:textColor="@color/SoftlyGray"
-            android:textSize="@dimen/dimenText"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/civPicture"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvChat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ListView
+        android:id="@+id/lvChat"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:divider="@drawable/transperent_color"
         app:layout_constraintBottom_toTopOf="@+id/llBottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/clMain" />
+        app:layout_constraintTop_toBottomOf="@+id/clMain"
+        tools:listitem="@layout/your_sms"/>
 
     <LinearLayout
         android:id="@+id/llBottom"

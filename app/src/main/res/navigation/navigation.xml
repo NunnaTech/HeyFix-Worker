@@ -9,20 +9,39 @@
         android:id="@+id/itHome"
         android:name="com.pandadevs.heyfix_worker.view.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_itHome_to_itServices"
+            app:destination="@id/itServices" />
+        <action
+            android:id="@+id/action_itHome_to_itProfile"
+            app:destination="@id/itProfile" />
+    </fragment>
 
     <fragment
         android:id="@+id/itServices"
         android:name="com.pandadevs.heyfix_worker.view.ServiceFragment"
         android:label="fragment_service"
-        tools:layout="@layout/fragment_service" />
+        tools:layout="@layout/fragment_service">
+        <action
+            android:id="@+id/action_itServices_to_itHome"
+            app:destination="@id/itHome" />
+        <action
+            android:id="@+id/action_itServices_to_itProfile"
+            app:destination="@id/itProfile" />
+    </fragment>
 
     <fragment
         android:id="@+id/itProfile"
         android:name="com.pandadevs.heyfix_worker.view.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" >
-
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_itProfile_to_itServices"
+            app:destination="@id/itServices" />
+        <action
+            android:id="@+id/action_itProfile_to_itHome"
+            app:destination="@id/itHome" />
     </fragment>
 
 </navigation>

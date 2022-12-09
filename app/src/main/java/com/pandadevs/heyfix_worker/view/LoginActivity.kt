@@ -21,6 +21,7 @@ import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
 import com.pandadevs.heyfix_worker.data.model.UserGet
 import com.pandadevs.heyfix_worker.databinding.ActivityLoginBinding
+import com.pandadevs.heyfix_worker.utils.LoadingScreen
 import com.pandadevs.heyfix_worker.utils.SharedPreferenceManager
 import com.pandadevs.heyfix_worker.utils.SnackbarShow
 import com.pandadevs.heyfix_worker.utils.Validations.fieldNotEmpty
@@ -132,6 +133,7 @@ class LoginActivity : AppCompatActivity() {
     fun getDataToPreferences(method: String, userEmailGoogle: String?) {
         val email =
             if (method == "email") binding.etEmail.editText?.text.toString() else userEmailGoogle
+        LoadingScreen.show(this,"Iniciando Sesión...",false)
         FirebaseFirestore.getInstance()
             .collection("users")
             .whereEqualTo("email", email)
@@ -152,8 +154,11 @@ class LoginActivity : AppCompatActivity() {
                     documents.documents[0].data!!["category_id"].toString(),
                     documents.documents[0].data!!["current_position"].toString(),
                 )
+                SharedPreferenceManager(applicationContext).saveProviderMail(method)
+                SharedPreferenceManager(applicationContext).saveUID(FirebaseAuth.getInstance().currentUser!!.uid)
                 SharedPreferenceManager(this).saveUser(user)
                 SharedPreferenceManager(this).saveSession()
+                LoadingScreen.hide()
                 startActivity(Intent(this, MainActivity::class.java))
             }
     }
